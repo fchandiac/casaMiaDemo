@@ -1,9 +1,9 @@
 // Export all types from different modules
-export * from './user';
-export * from './rewards';
-export * from './products';
-export * from './missions';
-export * from './store';
+export * from './users';
+export * from './reward';
+export * from './product';
+export * from './mission';
+export * from './stores';
 
 // Additional common types
 export type Status = 'active' | 'inactive' | 'pending';
