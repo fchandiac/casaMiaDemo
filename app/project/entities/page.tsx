@@ -16,7 +16,7 @@ export default function EntitiesPage() {
   const entities = [
     {
       name: 'User',
-      description: 'Represents a person who uses the application and interacts with the interface.',
+      description: 'Representa a una persona que utiliza la aplicación e interactúa con la interfaz.',
       category: 'Core',
       path: '/project/entitiesFlow/user',
       color: '#1976d2'
@@ -207,11 +207,11 @@ export default function EntitiesPage() {
     <Container maxWidth="xl" sx={{ py: 4 }}>
       <Box sx={{ mb: 6, textAlign: 'center' }}>
         <Typography variant="h2" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: '#1976d2' }}>
-          Project Entities
+          Entidades del Proyecto
         </Typography>
         <Typography variant="h5" component="p" sx={{ color: 'text.secondary', maxWidth: '800px', mx: 'auto' }}>
-          This section is designed to show and describe all the entities of the CasaMia loyalty system project. 
-          Each entity represents a core component of the application with its specific attributes and relationships.
+          Esta sección está diseñada para mostrar y describir todas las entidades del proyecto del sistema de lealtad CasaMia. 
+          Cada entidad representa un componente central de la aplicación con sus atributos y relaciones específicas.
         </Typography>
       </Box>
 
@@ -222,19 +222,17 @@ export default function EntitiesPage() {
         return (
           <Box key={category} sx={{ mb: 5 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-              <Chip 
-                label={category} 
+              <Box
                 sx={{ 
+                  width: '20px',
+                  height: '20px',
+                  borderRadius: '50%',
                   backgroundColor: getCategoryColor(category),
-                  color: 'white',
-                  fontWeight: 'bold',
-                  fontSize: '1rem',
-                  height: '32px',
                   mr: 2
                 }} 
               />
               <Typography variant="h4" component="h2" sx={{ fontWeight: 'medium' }}>
-                {category} Entities
+                {category === 'Core' ? 'Entidades de Identidad' : `${category} Entities`}
               </Typography>
             </Box>
             
