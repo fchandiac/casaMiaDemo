@@ -24,7 +24,9 @@ interface BadgeCardProps {
   type: 'bronze' | 'silver' | 'gold' | 'special';
   category: 'purchase' | 'location' | 'time' | 'achievement' | 'social';
   isEarned: boolean;
+  isExpired?: boolean; // Nueva prop para insignias vencidas
   earnedDate?: string;
+  expiryDate?: string; // Nueva prop para fecha de vencimiento
   progress?: number;
   maxProgress?: number;
   onClick?: () => void;
@@ -47,8 +49,9 @@ const getBadgeIcon = (category: string) => {
   }
 };
 
-const getBadgeColor = (type: string, isEarned: boolean) => {
+const getBadgeColor = (type: string, isEarned: boolean, isExpired = false) => {
   if (!isEarned) return '#bdbdbd';
+  if (isExpired) return '#9e9e9e'; // Color gris para vencidas
   
   switch (type) {
     case 'bronze':
@@ -71,12 +74,14 @@ export default function BadgeCard({
   type,
   category,
   isEarned,
+  isExpired = false,
   earnedDate,
+  expiryDate,
   progress = 0,
   maxProgress = 100,
   onClick
 }: BadgeCardProps) {
-  const badgeColor = getBadgeColor(type, isEarned);
+  const badgeColor = getBadgeColor(type, isEarned, isExpired);
   const progressPercentage = maxProgress > 0 ? (progress / maxProgress) * 100 : 0;
 
   return (
@@ -136,11 +141,24 @@ export default function BadgeCard({
 
         {/* Estado y progreso */}
         <Box sx={{ mb: 1 }}>
-          {isEarned ? (
+          {isEarned && isExpired ? (
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
+              <Timer sx={{ color: '#f44336', fontSize: 18 }} />
+              <Chip 
+                label="Vencida" 
+                size="small" 
+                sx={{ 
+                  bgcolor: '#f44336',
+                  color: 'white',
+                  fontWeight: 'bold'
+                }}
+              />
+            </Box>
+          ) : isEarned ? (
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
               <CheckCircle sx={{ color: '#4caf50', fontSize: 18 }} />
               <Chip 
-                label="Obtenida" 
+                label="Para Lucir" 
                 size="small" 
                 sx={{ 
                   bgcolor: '#4caf50',
@@ -162,8 +180,12 @@ export default function BadgeCard({
           )}
         </Box>
 
-        {/* Fecha de obtención o progreso */}
-        {isEarned && earnedDate ? (
+        {/* Fecha de obtención, vencimiento o progreso */}
+        {isEarned && isExpired && expiryDate ? (
+          <Typography variant="caption" color="error">
+            Venció: {expiryDate}
+          </Typography>
+        ) : isEarned && earnedDate ? (
           <Typography variant="caption" color="text.secondary">
             Obtenida: {earnedDate}
           </Typography>

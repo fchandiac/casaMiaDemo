@@ -13,8 +13,7 @@ import {
 } from '@mui/material';
 import { 
   EmojiEvents,
-  ArrowBack,
-  FilterList
+  ArrowBack
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -70,43 +69,10 @@ export default function BadgesPage() {
           >
             <ArrowBack />
           </IconButton>
-          <Typography variant="h4" sx={{ display: 'flex', alignItems: 'center', gap: 1, flexGrow: 1 }}>
+          <Typography variant="h4" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <EmojiEvents /> Mis Insignias
           </Typography>
-          <IconButton sx={{ border: '2px solid #ddd' }}>
-            <FilterList />
-          </IconButton>
         </Box>
-
-        {/* Resumen de Insignias */}
-        <Paper sx={{ p: 3, mb: 3, border: '2px solid #ddd', boxShadow: 'none', textAlign: 'center' }}>
-          <Grid container spacing={2}>
-            <Grid item xs={4}>
-              <Typography variant="h4" color="#ff9800" sx={{ fontWeight: 'bold' }}>
-                3
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Obtenidas
-              </Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography variant="h4" color="#2196f3" sx={{ fontWeight: 'bold' }}>
-                3
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                En Progreso
-              </Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography variant="h4" color="#9e9e9e" sx={{ fontWeight: 'bold' }}>
-                12
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Disponibles
-              </Typography>
-            </Grid>
-          </Grid>
-        </Paper>
 
         {/* Tabs de Filtros */}
         <Paper sx={{ border: '2px solid #ddd', boxShadow: 'none', mb: 3 }}>
@@ -123,23 +89,38 @@ export default function BadgesPage() {
           >
             <Tab 
               label={
-                <Badge badgeContent={6} color="primary">
-                  Todas
-                </Badge>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#4caf50' }}>
+                    2
+                  </Typography>
+                  <Typography variant="body2" sx={{ textTransform: 'none' }}>
+                    Para Lucir
+                  </Typography>
+                </Box>
               } 
             />
             <Tab 
               label={
-                <Badge badgeContent={3} color="success">
-                  Obtenidas
-                </Badge>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#f44336' }}>
+                    1
+                  </Typography>
+                  <Typography variant="body2" sx={{ textTransform: 'none' }}>
+                    Vencidas
+                  </Typography>
+                </Box>
               } 
             />
             <Tab 
               label={
-                <Badge badgeContent={3} color="warning">
-                  En Progreso
-                </Badge>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1976d2' }}>
+                    3
+                  </Typography>
+                  <Typography variant="body2" sx={{ textTransform: 'none' }}>
+                    Obtenidas
+                  </Typography>
+                </Box>
               } 
             />
           </Tabs>
@@ -147,43 +128,8 @@ export default function BadgesPage() {
 
         {/* Contenido de las tabs */}
         <TabPanel value={tabValue} index={0}>
-          {/* Todas las insignias */}
+          {/* Insignias Para Lucir - que puede usar ahora */}
           <Grid container spacing={2}>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="first-purchase"
-                name="Primera Compra"
-                description="Realizaste tu primera compra en CasaMia"
-                type="bronze"
-                category="purchase"
-                isEarned={true}
-                earnedDate="15/12/2024"
-              />
-            </Grid>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="coffee-lover"
-                name="Amante del Café"
-                description="Compra 5 cafés para obtener esta insignia"
-                type="silver"
-                category="purchase"
-                isEarned={false}
-                progress={3}
-                maxProgress={5}
-              />
-            </Grid>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="loyal-customer"
-                name="Cliente Leal"
-                description="Visita CasaMia 10 veces en un mes"
-                type="gold"
-                category="location"
-                isEarned={false}
-                progress={7}
-                maxProgress={10}
-              />
-            </Grid>
             <Grid item xs={6} sm={4}>
               <BadgeCard
                 id="early-bird"
@@ -192,19 +138,8 @@ export default function BadgesPage() {
                 type="special"
                 category="time"
                 isEarned={true}
+                isExpired={false}
                 earnedDate="20/12/2024"
-              />
-            </Grid>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="social-star"
-                name="Estrella Social"
-                description="Comparte 3 experiencias en redes sociales"
-                type="silver"
-                category="social"
-                isEarned={false}
-                progress={1}
-                maxProgress={3}
               />
             </Grid>
             <Grid item xs={6} sm={4}>
@@ -215,6 +150,7 @@ export default function BadgesPage() {
                 type="gold"
                 category="achievement"
                 isEarned={true}
+                isExpired={false}
                 earnedDate="18/12/2024"
               />
             </Grid>
@@ -222,7 +158,7 @@ export default function BadgesPage() {
         </TabPanel>
 
         <TabPanel value={tabValue} index={1}>
-          {/* Solo insignias obtenidas */}
+          {/* Insignias Vencidas - obtuvo pero no puede usar */}
           <Grid container spacing={2}>
             <Grid item xs={6} sm={4}>
               <BadgeCard
@@ -232,7 +168,28 @@ export default function BadgesPage() {
                 type="bronze"
                 category="purchase"
                 isEarned={true}
+                isExpired={true}
                 earnedDate="15/12/2024"
+                expiryDate="15/01/2025"
+              />
+            </Grid>
+          </Grid>
+        </TabPanel>
+
+        <TabPanel value={tabValue} index={2}>
+          {/* Todas las Obtenidas - historial completo */}
+          <Grid container spacing={2}>
+            <Grid item xs={6} sm={4}>
+              <BadgeCard
+                id="first-purchase"
+                name="Primera Compra"
+                description="Realizaste tu primera compra en CasaMia"
+                type="bronze"
+                category="purchase"
+                isEarned={true}
+                isExpired={true}
+                earnedDate="15/12/2024"
+                expiryDate="15/01/2025"
               />
             </Grid>
             <Grid item xs={6} sm={4}>
@@ -243,6 +200,7 @@ export default function BadgesPage() {
                 type="special"
                 category="time"
                 isEarned={true}
+                isExpired={false}
                 earnedDate="20/12/2024"
               />
             </Grid>
@@ -254,49 +212,8 @@ export default function BadgesPage() {
                 type="gold"
                 category="achievement"
                 isEarned={true}
+                isExpired={false}
                 earnedDate="18/12/2024"
-              />
-            </Grid>
-          </Grid>
-        </TabPanel>
-
-        <TabPanel value={tabValue} index={2}>
-          {/* Solo insignias en progreso */}
-          <Grid container spacing={2}>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="coffee-lover"
-                name="Amante del Café"
-                description="Compra 5 cafés para obtener esta insignia"
-                type="silver"
-                category="purchase"
-                isEarned={false}
-                progress={3}
-                maxProgress={5}
-              />
-            </Grid>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="loyal-customer"
-                name="Cliente Leal"
-                description="Visita CasaMia 10 veces en un mes"
-                type="gold"
-                category="location"
-                isEarned={false}
-                progress={7}
-                maxProgress={10}
-              />
-            </Grid>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="social-star"
-                name="Estrella Social"
-                description="Comparte 3 experiencias en redes sociales"
-                type="silver"
-                category="social"
-                isEarned={false}
-                progress={1}
-                maxProgress={3}
               />
             </Grid>
           </Grid>
