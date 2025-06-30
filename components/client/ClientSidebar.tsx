@@ -15,13 +15,14 @@ import {
 import {
   Home,
   AccountBalanceWallet,
-  Assignment,
+  Rocket,
   EmojiEvents,
   QrCodeScanner,
   Star,
   Person,
   Logout,
-  Notifications
+  Notifications,
+  CollectionsBookmark
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 
@@ -53,7 +54,7 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
     },
     { 
       text: 'Misiones', 
-      icon: <Assignment />, 
+      icon: <Rocket />, 
       path: '/client/missions',
       color: '#1976d2'
     },
@@ -67,6 +68,12 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
       text: 'Insignias', 
       icon: <Star />, 
       path: '/client/badges',
+      color: '#1976d2'
+    },
+    { 
+      text: 'Tarjetas de Colección', 
+      icon: <CollectionsBookmark />, 
+      path: '/client/collections',
       color: '#1976d2'
     }
   ];

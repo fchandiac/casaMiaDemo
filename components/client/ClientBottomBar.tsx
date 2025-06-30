@@ -8,7 +8,7 @@ import {
 import {
   Home,
   AccountBalanceWallet,
-  Assignment,
+  Rocket,
   EmojiEvents,
   QrCodeScanner
 } from '@mui/icons-material';
@@ -71,7 +71,7 @@ export default function ClientBottomBar() {
         />
         <BottomNavigationAction
           label="Misiones"
-          icon={<Assignment />}
+          icon={<Rocket />}
           onClick={() => handleNavigation('/client/missions', 3)}
         />
         <BottomNavigationAction
