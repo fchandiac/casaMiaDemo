@@ -49,49 +49,55 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
       text: 'Billetera', 
       icon: <AccountBalanceWallet />, 
       path: '/client/wallet',
-      color: '#4caf50'
+      color: '#1976d2'
     },
     { 
       text: 'Misiones', 
       icon: <Assignment />, 
       path: '/client/missions',
-      color: '#ff9800'
+      color: '#1976d2'
     },
     { 
       text: 'Recompensas', 
       icon: <EmojiEvents />, 
       path: '/client/rewards',
-      color: '#9c27b0'
+      color: '#1976d2'
     },
     { 
       text: 'Insignias', 
       icon: <Star />, 
       path: '/client/badges',
-      color: '#ffc107'
+      color: '#1976d2'
     }
   ];
 
   const actionItems = [
     { 
-      text: 'Escanear QR', 
+      text: 'Escanear Menu', 
       icon: <QrCodeScanner />, 
       path: '/client/scan-qr',
-      color: '#e91e63'
+      color: '#1976d2'
     },
     { 
-      text: 'Notificaciones', 
-      icon: <Notifications />, 
-      path: '/client/notifications',
-      color: '#607d8b'
+      text: 'Escanear Boleta', 
+      icon: <QrCodeScanner />, 
+      path: '/client/scan-receipt',
+      color: '#1976d2'
     }
   ];
 
   const profileItems = [
     { 
+      text: 'Notificaciones', 
+      icon: <Notifications />, 
+      path: '/client/notifications',
+      color: '#1976d2'
+    },
+    { 
       text: 'Mi Perfil', 
       icon: <Person />, 
       path: '/client/profile',
-      color: '#795548'
+      color: '#1976d2'
     }
   ];
 
@@ -207,9 +213,6 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
           <Divider sx={{ my: 1 }} />
 
           {/* Sección Perfil */}
-          <Typography variant="subtitle2" sx={{ px: 2, py: 1, color: 'text.secondary', fontWeight: 'bold' }}>
-            CUENTA
-          </Typography>
           <List sx={{ py: 0 }}>
             {profileItems.map((item) => (
               <ListItem key={item.text} sx={{ py: 0 }}>
@@ -248,12 +251,12 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
                   mb: 0.5,
                   border: '1px solid transparent',
                   '&:hover': { 
-                    bgcolor: 'rgba(244, 67, 54, 0.1)',
-                    border: '1px solid #f44336'
+                    bgcolor: 'rgba(25, 118, 210, 0.1)',
+                    border: '1px solid #1976d2'
                   }
                 }}
               >
-                <ListItemIcon sx={{ color: '#f44336', minWidth: 40 }}>
+                <ListItemIcon sx={{ color: '#1976d2', minWidth: 40 }}>
                   <Logout />
                 </ListItemIcon>
                 <ListItemText 
