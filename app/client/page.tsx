@@ -24,9 +24,11 @@ import {
   Star,
   Notifications
 } from '@mui/icons-material';
+import { useRouter } from 'next/navigation';
 import { ClientHeader, ClientBottomBar } from '@/components/client';
 
 export default function ClientPage() {
+  const router = useRouter();
   
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: '#f5f5f5' }}>
@@ -54,7 +56,20 @@ export default function ClientPage() {
         {/* Billetera y Resumen */}
         <Grid container spacing={2} sx={{ mb: 3 }}>
           <Grid item xs={6}>
-            <Card sx={{ border: '2px solid #ddd', textAlign: 'center', boxShadow: 'none' }}>
+            <Card 
+              sx={{ 
+                border: '2px solid #ddd', 
+                textAlign: 'center', 
+                boxShadow: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                '&:hover': {
+                  borderColor: '#4caf50',
+                  transform: 'translateY(-2px)'
+                }
+              }}
+              onClick={() => router.push('/client/wallet')}
+            >
               <CardContent>
                 <AccountBalanceWallet sx={{ fontSize: 40, color: '#4caf50', mb: 1 }} />
                 <Typography variant="h6">Billetera</Typography>
@@ -64,7 +79,20 @@ export default function ClientPage() {
             </Card>
           </Grid>
           <Grid item xs={6}>
-            <Card sx={{ border: '2px solid #ddd', textAlign: 'center', boxShadow: 'none' }}>
+            <Card 
+              sx={{ 
+                border: '2px solid #ddd', 
+                textAlign: 'center', 
+                boxShadow: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                '&:hover': {
+                  borderColor: '#ff9800',
+                  transform: 'translateY(-2px)'
+                }
+              }}
+              onClick={() => router.push('/client/badges')}
+            >
               <CardContent>
                 <EmojiEvents sx={{ fontSize: 40, color: '#ff9800', mb: 1 }} />
                 <Typography variant="h6">Insignias</Typography>
