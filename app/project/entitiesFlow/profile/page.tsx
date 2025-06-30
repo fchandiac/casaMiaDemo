@@ -15,17 +15,17 @@ import {
 import { ArrowBack } from '@mui/icons-material';
 import Link from 'next/link';
 
-export default function PerfilPage() {
+export default function ProfilePage() {
   const attributes = [
-    { name: 'id', type: 'number', description: 'Identificador único del perfil' },
-    { name: 'usuarioID', type: 'number', description: 'ID del usuario propietario del perfil' },
-    { name: 'userSegmentOptions', type: 'JSON', description: 'Conjunto de opciones de segmentación del usuario' }
+    { name: 'id', type: 'string', description: 'Unique identifier for the profile' },
+    { name: 'userId', type: 'string', description: 'ID of the user who owns the profile' },
+    { name: 'userSegmentOptions', type: 'JSON', description: 'Set of user segmentation options' }
   ];
 
   const relationships = [
-    { entity: 'Usuario', type: '1:1', description: 'Un perfil pertenece a un usuario específico' },
-    { entity: 'UserSegmentOptions', type: '1:N', description: 'Un perfil puede tener múltiples opciones de segmentación' },
-    { entity: 'Segmento', type: 'N:M', description: 'Un perfil puede pertenecer a múltiples segmentos' }
+    { entity: 'User', type: '1:1', description: 'A profile belongs to a specific user' },
+    { entity: 'UserSegmentOption', type: '1:N', description: 'A profile can have multiple segmentation options' },
+    { entity: 'Segment', type: 'N:M', description: 'A profile can belong to multiple segments' }
   ];
 
   return (
@@ -33,30 +33,30 @@ export default function PerfilPage() {
       <Box sx={{ mb: 3 }}>
         <Link href="/project/entitiesFlow" passHref>
           <Button startIcon={<ArrowBack />} variant="outlined">
-            Volver al Diagrama
+            Back to Diagram
           </Button>
         </Link>
       </Box>
 
       <Typography variant="h3" component="h1" gutterBottom>
-        Perfil
+        Profile
       </Typography>
 
       <Typography variant="body1" paragraph sx={{ mb: 4 }}>
-        Compuesto por múltiples opciones de segmentación. Define grupos con listas, checks o valores numéricos.
+        Composed of multiple segmentation options. Defines groups with lists, checkboxes, or numeric values.
       </Typography>
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Atributos
+          Attributes
         </Typography>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Nombre</strong></TableCell>
-                <TableCell><strong>Tipo</strong></TableCell>
-                <TableCell><strong>Descripción</strong></TableCell>
+                <TableCell><strong>Name</strong></TableCell>
+                <TableCell><strong>Type</strong></TableCell>
+                <TableCell><strong>Description</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -74,15 +74,15 @@ export default function PerfilPage() {
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Relaciones
+          Relationships
         </Typography>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Entidad</strong></TableCell>
-                <TableCell><strong>Tipo</strong></TableCell>
-                <TableCell><strong>Descripción</strong></TableCell>
+                <TableCell><strong>Entity</strong></TableCell>
+                <TableCell><strong>Type</strong></TableCell>
+                <TableCell><strong>Description</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

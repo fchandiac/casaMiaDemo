@@ -15,17 +15,17 @@ import {
 import { ArrowBack } from '@mui/icons-material';
 import Link from 'next/link';
 
-export default function BilleteraPage() {
+export default function WalletPage() {
   const attributes = [
-    { name: 'id', type: 'number', description: 'Identificador único de la billetera' },
-    { name: 'usuarioID', type: 'number', description: 'ID del usuario propietario' },
-    { name: 'saldoActual', type: 'number', description: 'Saldo actual en la billetera' },
-    { name: 'saldoAnterior', type: 'number', description: 'Saldo anterior registrado' }
+    { name: 'id', type: 'string', description: 'Unique identifier for the wallet' },
+    { name: 'userId', type: 'string', description: 'ID of the user who owns the wallet' },
+    { name: 'currentBalance', type: 'number', description: 'Current balance in the wallet' },
+    { name: 'previousBalance', type: 'number', description: 'Previous recorded balance' }
   ];
 
   const relationships = [
-    { entity: 'Usuario', type: 'N:1', description: 'Una billetera pertenece a un usuario' },
-    { entity: 'MovimientosBilletera', type: '1:N', description: 'Una billetera puede tener múltiples movimientos' }
+    { entity: 'User', type: 'N:1', description: 'A wallet belongs to a user' },
+    { entity: 'WalletMovement', type: '1:N', description: 'A wallet can have multiple movements' }
   ];
 
   return (
@@ -33,30 +33,30 @@ export default function BilleteraPage() {
       <Box sx={{ mb: 3 }}>
         <Link href="/project/entitiesFlow" passHref>
           <Button startIcon={<ArrowBack />} variant="outlined">
-            Volver al Diagrama
+            Back to Diagram
           </Button>
         </Link>
       </Box>
 
       <Typography variant="h3" component="h1" gutterBottom>
-        Billetera
+        Wallet
       </Typography>
 
       <Typography variant="body1" paragraph sx={{ mb: 4 }}>
-        Cuenta virtual del usuario para recompensas en dinero.
+        Virtual account for user rewards in money.
       </Typography>
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Atributos
+          Attributes
         </Typography>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Nombre</strong></TableCell>
-                <TableCell><strong>Tipo</strong></TableCell>
-                <TableCell><strong>Descripción</strong></TableCell>
+                <TableCell><strong>Name</strong></TableCell>
+                <TableCell><strong>Type</strong></TableCell>
+                <TableCell><strong>Description</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -74,15 +74,15 @@ export default function BilleteraPage() {
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Relaciones
+          Relationships
         </Typography>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Entidad</strong></TableCell>
-                <TableCell><strong>Tipo</strong></TableCell>
-                <TableCell><strong>Descripción</strong></TableCell>
+                <TableCell><strong>Entity</strong></TableCell>
+                <TableCell><strong>Type</strong></TableCell>
+                <TableCell><strong>Description</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
