@@ -129,94 +129,94 @@ export default function BadgesPage() {
         {/* Contenido de las tabs */}
         <TabPanel value={tabValue} index={0}>
           {/* Insignias Para Lucir - que puede usar ahora */}
-          <Grid container spacing={2}>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="early-bird"
-                name="Madrugador"
-                description="Visita la tienda antes de las 8:00 AM"
-                type="special"
-                category="time"
-                isEarned={true}
-                isExpired={false}
-                earnedDate="20/12/2024"
-              />
-            </Grid>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="perfect-rating"
-                name="Calificación Perfecta"
-                description="Da 5 estrellas a 5 productos diferentes"
-                type="gold"
-                category="achievement"
-                isEarned={true}
-                isExpired={false}
-                earnedDate="18/12/2024"
-              />
-            </Grid>
-          </Grid>
+          <Box>
+            <BadgeCard
+              id="early-bird"
+              name="Madrugador"
+              description="Visitaste la tienda antes de las 9:00 AM"
+              type="bronze"
+              category="time"
+              isEarned={true}
+              isExpired={false}
+              earnedDate="20/12/2024"
+              benefit="10% en todos los cafés"
+              validUntil="20/03/2025"
+            />
+            <BadgeCard
+              id="perfect-rating"
+              name="Calificación Perfecta"
+              description="Respondiste Trivia de forma perfecta"
+              type="gold"
+              category="achievement"
+              isEarned={true}
+              isExpired={false}
+              earnedDate="18/12/2024"
+              benefit="Segundo café con 30% de descuento"
+              validUntil="18/04/2025"
+            />
+          </Box>
         </TabPanel>
 
         <TabPanel value={tabValue} index={1}>
           {/* Insignias Vencidas - obtuvo pero no puede usar */}
-          <Grid container spacing={2}>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="first-purchase"
-                name="Primera Compra"
-                description="Realizaste tu primera compra en CasaMia"
-                type="bronze"
-                category="purchase"
-                isEarned={true}
-                isExpired={true}
-                earnedDate="15/12/2024"
-                expiryDate="15/01/2025"
-              />
-            </Grid>
-          </Grid>
+          <Box>
+            <BadgeCard
+              id="first-purchase"
+              name="Primera Compra"
+              description="Completaste tu primera compra en CasaMia"
+              type="expired"
+              category="purchase"
+              isEarned={true}
+              isExpired={true}
+              earnedDate="15/12/2024"
+              expiryDate="15/01/2025"
+              benefit="15% de descuento en tu próxima compra"
+              validUntil="15/01/2025"
+            />
+          </Box>
         </TabPanel>
 
         <TabPanel value={tabValue} index={2}>
           {/* Todas las Obtenidas - historial completo */}
-          <Grid container spacing={2}>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="first-purchase"
-                name="Primera Compra"
-                description="Realizaste tu primera compra en CasaMia"
-                type="bronze"
-                category="purchase"
-                isEarned={true}
-                isExpired={true}
-                earnedDate="15/12/2024"
-                expiryDate="15/01/2025"
-              />
-            </Grid>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="early-bird"
-                name="Madrugador"
-                description="Visita la tienda antes de las 8:00 AM"
-                type="special"
-                category="time"
-                isEarned={true}
-                isExpired={false}
-                earnedDate="20/12/2024"
-              />
-            </Grid>
-            <Grid item xs={6} sm={4}>
-              <BadgeCard
-                id="perfect-rating"
-                name="Calificación Perfecta"
-                description="Da 5 estrellas a 5 productos diferentes"
-                type="gold"
-                category="achievement"
-                isEarned={true}
-                isExpired={false}
-                earnedDate="18/12/2024"
-              />
-            </Grid>
-          </Grid>
+          <Box>
+            <BadgeCard
+              id="first-purchase"
+              name="Primera Compra"
+              description="Completaste tu primera compra en CasaMia"
+              type="expired"
+              category="purchase"
+              isEarned={true}
+              isExpired={true}
+              earnedDate="15/12/2024"
+              expiryDate="15/01/2025"
+              benefit="15% de descuento en tu próxima compra"
+              validUntil="15/01/2025"
+            />
+            <BadgeCard
+              id="early-bird"
+              name="Madrugador"
+              description="Visitaste la tienda antes de las 9:00 AM"
+              type="bronze"
+              category="time"
+              isEarned={true}
+              isExpired={false}
+              earnedDate="20/12/2024"
+              benefit="10% en todos los cafés"
+              validUntil="20/03/2025"
+            />
+            <BadgeCard
+              id="perfect-rating"
+              name="Calificación Perfecta"
+              description="Respondiste Trivia de forma perfecta"
+              type="gold"
+              category="achievement"
+              isEarned={true}
+              isExpired={false}
+              earnedDate="18/12/2024"
+              benefit="Segundo café con 30% de descuento"
+              validUntil="18/04/2025"
+            />
+          </Box>
         </TabPanel>
       </Container>
       
