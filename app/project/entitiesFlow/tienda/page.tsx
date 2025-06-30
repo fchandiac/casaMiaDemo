@@ -1,0 +1,104 @@
+import React from 'react';
+import {
+  Typography,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Container,
+  Box,
+  Button
+} from '@mui/material';
+import { ArrowBack } from '@mui/icons-material';
+import Link from 'next/link';
+
+export default function TiendaPage() {
+  const attributes = [
+    { name: 'id', type: 'number', description: 'Identificador único de la tienda' },
+    { name: 'nombre', type: 'string', description: 'Nombre de la tienda' },
+    { name: 'dirección', type: 'string', description: 'Dirección física de la tienda' },
+    { name: 'latitud', type: 'number', description: 'Coordenada de latitud de la tienda' },
+    { name: 'longitud', type: 'number', description: 'Coordenada de longitud de la tienda' }
+  ];
+
+  const relationships = [
+    { entity: 'EstoyEnCasaMia', type: '1:N', description: 'Una tienda puede tener múltiples misiones GPS' },
+    { entity: 'FindQRCode', type: '1:N', description: 'Una tienda puede tener múltiples QR códigos ocultos' },
+    { entity: 'MenuScan', type: '1:N', description: 'Una tienda puede tener múltiples escaneos de menú' }
+  ];
+
+  return (
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Box sx={{ mb: 3 }}>
+        <Link href="/project/entitiesFlow" passHref>
+          <Button startIcon={<ArrowBack />} variant="outlined">
+            Volver al Diagrama
+          </Button>
+        </Link>
+      </Box>
+
+      <Typography variant="h3" component="h1" gutterBottom>
+        Tienda
+      </Typography>
+
+      <Typography variant="body1" paragraph sx={{ mb: 4 }}>
+        Representa tienda física usada para misiones GPS o registro de compras.
+      </Typography>
+
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Atributos
+        </Typography>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell><strong>Nombre</strong></TableCell>
+                <TableCell><strong>Tipo</strong></TableCell>
+                <TableCell><strong>Descripción</strong></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {attributes.map((attr) => (
+                <TableRow key={attr.name}>
+                  <TableCell>{attr.name}</TableCell>
+                  <TableCell>{attr.type}</TableCell>
+                  <TableCell>{attr.description}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Relaciones
+        </Typography>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell><strong>Entidad</strong></TableCell>
+                <TableCell><strong>Tipo</strong></TableCell>
+                <TableCell><strong>Descripción</strong></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {relationships.map((rel, index) => (
+                <TableRow key={index}>
+                  <TableCell>{rel.entity}</TableCell>
+                  <TableCell>{rel.type}</TableCell>
+                  <TableCell>{rel.description}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+    </Container>
+  );
+}
