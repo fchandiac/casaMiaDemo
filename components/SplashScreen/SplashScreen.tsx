@@ -165,7 +165,7 @@ export default function SplashScreen({ onComplete, duration = 8000 }: SplashScre
                 },
               }}
             >
-              Tu cafetería de confianza
+              Maqueta Funcional
             </Typography>
           </Fade>
 
@@ -180,7 +180,7 @@ export default function SplashScreen({ onComplete, duration = 8000 }: SplashScre
                 fontWeight: 500,
               }}
             >
-              Programa de Fidelización ☕
+              CasaMiaApp Demo
             </Typography>
           </Fade>
 
@@ -216,27 +216,6 @@ export default function SplashScreen({ onComplete, duration = 8000 }: SplashScre
                   }}
                 />
               ))}
-            </Box>
-          </Fade>
-
-          {/* Información adicional en la parte inferior */}
-          <Fade in={taglineVisible} timeout={1000}>
-            <Box
-              sx={{
-                position: 'absolute',
-                bottom: 40,
-                textAlign: 'center',
-              }}
-            >
-              <Typography
-                variant="caption"
-                sx={{
-                  color: theme.palette.text.secondary,
-                  fontSize: '0.75rem',
-                }}
-              >
-                © {new Date().getFullYear()} CasaMia - Desarrollado con ❤️ para nuestros clientes
-              </Typography>
             </Box>
           </Fade>
         </Box>
