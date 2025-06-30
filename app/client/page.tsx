@@ -12,10 +12,10 @@ import {
 } from '@mui/material';
 import { 
   AccountBalanceWallet,
-  EmojiEvents
+  Star
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
-import { ClientHeader, ClientBottomBar, CollectionCard } from '@/components/client';
+import { ClientHeader, ClientBottomBar, CollectionCard, MissionCard } from '@/components/client';
 
 export default function ClientPage() {
   const router = useRouter();
@@ -84,7 +84,7 @@ export default function ClientPage() {
               onClick={() => router.push('/client/badges')}
             >
               <CardContent>
-                <EmojiEvents sx={{ fontSize: 40, color: '#ff9800', mb: 1 }} />
+                <Star sx={{ fontSize: 40, color: '#ff9800', mb: 1 }} />
                 <Typography variant="h6">Insignias</Typography>
                 <Typography variant="h4" color="#ff9800">3</Typography>
                 <Typography variant="caption">Insignias ganadas</Typography>
@@ -99,6 +99,18 @@ export default function ClientPage() {
             productName="Mockaccino Mediano"
             completedCount={3}
             totalCount={5}
+          />
+        </Box>
+
+        {/* Tarjeta de Misión */}
+        <Box sx={{ mb: 3 }}>
+          <MissionCard 
+            title="Visita Matutina"
+            description="Llega a CasaMia antes de las 9:00 AM"
+            reward="$2.000"
+            imageEmoji="🌅"
+            progress={0}
+            onComplete={() => alert('¡Misión completada!')}
           />
         </Box>
       </Container>

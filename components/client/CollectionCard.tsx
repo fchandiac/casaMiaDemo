@@ -61,11 +61,12 @@ export default function CollectionCard({
               Tarjeta de colección
             </Typography>
             <Typography 
-              variant="h6" 
+              variant="subtitle1" 
               sx={{ 
                 fontWeight: 'bold',
                 mt: 0.5,
-                lineHeight: 1.2
+                lineHeight: 1.2,
+                fontSize: '1rem'
               }}
             >
               {productName}

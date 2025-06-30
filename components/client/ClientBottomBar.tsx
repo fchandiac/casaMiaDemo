@@ -9,7 +9,7 @@ import {
   Home,
   AccountBalanceWallet,
   Rocket,
-  EmojiEvents,
+  CollectionsBookmark,
   QrCodeScanner
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
@@ -75,9 +75,9 @@ export default function ClientBottomBar() {
           onClick={() => handleNavigation('/client/missions', 3)}
         />
         <BottomNavigationAction
-          label="Recompensas"
-          icon={<EmojiEvents />}
-          onClick={() => handleNavigation('/client/rewards', 4)}
+          label="Colecciones"
+          icon={<CollectionsBookmark />}
+          onClick={() => handleNavigation('/client/collections', 4)}
         />
       </BottomNavigation>
     </Paper>

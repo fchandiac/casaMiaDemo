@@ -23,161 +23,161 @@ export default function EntitiesPage() {
     },
     {
       name: 'Profile',
-      description: 'Composed of multiple segmentation options. Defines groups with lists, checkboxes, or numeric values.',
+      description: 'Compuesto por múltiples opciones de segmentación. Define grupos con listas, casillas de verificación o valores numéricos.',
       category: 'Core',
       path: '/project/entitiesFlow/profile',
       color: '#1976d2'
     },
     {
       name: 'Role',
-      description: 'Defines access and permissions. Can be client, operator, or administrator.',
+      description: 'Define acceso y permisos. Puede ser cliente, operador o administrador.',
       category: 'Core',
       path: '/project/entitiesFlow/role',
       color: '#1976d2'
     },
     {
       name: 'Wallet',
-      description: 'Virtual account for user rewards in money.',
+      description: 'Cuenta virtual para recompensas del usuario en dinero.',
       category: 'Financial',
       path: '/project/entitiesFlow/wallet',
       color: '#388e3c'
     },
     {
       name: 'Wallet Movement',
-      description: 'Record of wallet transactions.',
+      description: 'Registro de transacciones de la billetera.',
       category: 'Financial',
       path: '/project/entitiesFlow/walletmovement',
       color: '#388e3c'
     },
     {
       name: 'Product',
-      description: 'Element used in missions, not necessarily sold.',
+      description: 'Elemento utilizado en misiones, no necesariamente vendido.',
       category: 'Catalog',
       path: '/project/entitiesFlow/product',
       color: '#f57c00'
     },
     {
       name: 'Image',
-      description: 'Visual file used by products, missions, or other entities.',
+      description: 'Archivo visual utilizado por productos, misiones u otras entidades.',
       category: 'Media',
       path: '/project/entitiesFlow/image',
       color: '#7b1fa2'
     },
     {
       name: 'Mission',
-      description: 'Challenge that delivers reward when completed.',
+      description: 'Desafío que entrega recompensa cuando se completa.',
       category: 'Gamification',
       path: '/project/entitiesFlow/mission',
       color: '#d32f2f'
     },
     {
       name: 'Survey',
-      description: 'Mission type survey to validate responses.',
+      description: 'Misión tipo encuesta para validar respuestas.',
       category: 'Gamification',
       path: '/project/entitiesFlow/survey',
       color: '#d32f2f'
     },
     {
       name: 'Trivia',
-      description: 'Mission based on trivia questions. Reward for correct answer.',
+      description: 'Misión basada en preguntas de trivia. Recompensa por respuesta correcta.',
       category: 'Gamification',
       path: '/project/entitiesFlow/trivia',
       color: '#d32f2f'
     },
     {
       name: 'Location Mission',
-      description: 'GPS mission to validate presence in physical store.',
+      description: 'Misión GPS para validar presencia en tienda física.',
       category: 'Gamification',
       path: '/project/entitiesFlow/locationmission',
       color: '#d32f2f'
     },
     {
       name: 'QR Code Mission',
-      description: 'Search type mission. Scan hidden QR code.',
+      description: 'Misión tipo búsqueda. Escanear código QR oculto.',
       category: 'Gamification',
       path: '/project/entitiesFlow/qrcodemission',
       color: '#d32f2f'
     },
     {
       name: 'Purchase Mission',
-      description: 'Mission that requires buying product and validating it.',
+      description: 'Misión que requiere comprar producto y validarlo.',
       category: 'Gamification',
       path: '/project/entitiesFlow/purchasemission',
       color: '#d32f2f'
     },
     {
       name: 'Reward',
-      description: 'Prize for completing mission or action. Can be money, product, coupon, or badge.',
+      description: 'Premio por completar misión o acción. Puede ser dinero, producto, cupón o insignia.',
       category: 'Rewards',
       path: '/project/entitiesFlow/reward',
       color: '#fbc02d'
     },
     {
       name: 'Badge',
-      description: 'Symbolic or functional reward associated with benefits.',
+      description: 'Recompensa simbólica o funcional asociada con beneficios.',
       category: 'Rewards',
       path: '/project/entitiesFlow/badge',
       color: '#fbc02d'
     },
     {
       name: 'Collection Card',
-      description: 'Collectible card that accumulates products for reward.',
+      description: 'Tarjeta coleccionable que acumula productos para recompensa.',
       category: 'Rewards',
       path: '/project/entitiesFlow/collectioncard',
       color: '#fbc02d'
     },
     {
       name: 'Store',
-      description: 'Represents physical store used for GPS missions or purchase records.',
+      description: 'Representa tienda física utilizada para misiones GPS o registros de compra.',
       category: 'Location',
       path: '/project/entitiesFlow/store',
       color: '#5d4037'
     },
     {
       name: 'Receipt',
-      description: 'Scanned receipt record that can generate reward.',
+      description: 'Registro de boleta escaneada que puede generar recompensa.',
       category: 'Transaction',
       path: '/project/entitiesFlow/receipt',
       color: '#455a64'
     },
     {
       name: 'Menu Scan',
-      description: 'QR menu scan at store. Records visit or reward.',
+      description: 'Escaneo de menú QR en tienda. Registra visita o recompensa.',
       category: 'Transaction',
       path: '/project/entitiesFlow/menuscan',
       color: '#455a64'
     },
     {
       name: 'Product Rating',
-      description: 'Allows rating products.',
+      description: 'Permite calificar productos.',
       category: 'Engagement',
       path: '/project/entitiesFlow/productrating',
       color: '#e91e63'
     },
     {
       name: 'Notification',
-      description: 'Message sent to user from system or admin.',
+      description: 'Mensaje enviado al usuario desde el sistema o administrador.',
       category: 'Communication',
       path: '/project/entitiesFlow/notification',
       color: '#00796b'
     },
     {
       name: 'Segment',
-      description: 'Groups users by criteria defined by administrator.',
+      description: 'Agrupa usuarios por criterios definidos por el administrador.',
       category: 'Segmentation',
       path: '/project/entitiesFlow/segment',
       color: '#3f51b5'
     },
     {
       name: 'Segment Option',
-      description: 'Segmentation questions. Can be multiple choice, numeric value, etc.',
+      description: 'Preguntas de segmentación. Pueden ser de opción múltiple, valor numérico, etc.',
       category: 'Segmentation',
       path: '/project/entitiesFlow/segmentoption',
       color: '#3f51b5'
     },
     {
       name: 'User Segment Option',
-      description: 'Stores segmentation responses to assign to segments.',
+      description: 'Almacena respuestas de segmentación para asignar a segmentos.',
       category: 'Segmentation',
       path: '/project/entitiesFlow/usersegmentoption',
       color: '#3f51b5'
