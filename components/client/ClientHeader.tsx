@@ -5,8 +5,7 @@ import {
   Typography,
   IconButton,
   Box,
-  Badge,
-  Avatar
+  Badge
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -25,14 +24,15 @@ export default function ClientHeader() {
   return (
     <>
       <AppBar 
-        position="static" 
+        position="fixed" 
         sx={{ 
           boxShadow: 'none', 
-          border: '2px solid #ddd',
-          borderBottom: '3px solid #1976d2'
+          borderBottom: '3px solid #1976d2',
+          top: 0,
+          zIndex: 1100
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ minHeight: '80px' }}>
           {/* Botón del menú */}
           <IconButton
             edge="start"
@@ -58,16 +58,11 @@ export default function ClientHeader() {
           </Box>
 
           {/* Notificaciones */}
-          <IconButton color="inherit" sx={{ mr: 1 }}>
+          <IconButton color="inherit">
             <Badge badgeContent={3} color="error">
               <Notifications />
             </Badge>
           </IconButton>
-
-          {/* Avatar del usuario */}
-          <Avatar sx={{ width: 35, height: 35, bgcolor: 'secondary.main', boxShadow: 'none' }}>
-            C
-          </Avatar>
         </Toolbar>
       </AppBar>
 

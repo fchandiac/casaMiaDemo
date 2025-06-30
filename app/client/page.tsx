@@ -24,7 +24,7 @@ import {
   Star,
   Notifications
 } from '@mui/icons-material';
-import ClientHeader from '@/components/client/ClientHeader';
+import { ClientHeader, ClientBottomBar } from '@/components/client';
 
 export default function ClientPage() {
   
@@ -32,7 +32,14 @@ export default function ClientPage() {
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: '#f5f5f5' }}>
       <ClientHeader />
       
-      <Container maxWidth="md" sx={{ mt: 2, mb: 4, flex: 1 }}>
+      <Container 
+        maxWidth="md" 
+        sx={{ 
+          mt: '100px', // Espacio para el top bar fijo (80px + 20px margin)
+          mb: '90px',  // Espacio para el bottom bar fijo (70px + 20px margin)
+          flex: 1 
+        }}
+      >
         {/* Header de Usuario */}
         <Paper sx={{ p: 3, mb: 3, border: '2px solid #ddd', boxShadow: 'none' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -221,6 +228,8 @@ export default function ClientPage() {
           </Grid>
         </Paper>
       </Container>
+      
+      <ClientBottomBar />
     </Box>
   );
 }
