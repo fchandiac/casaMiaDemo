@@ -46,7 +46,13 @@ export default function LoginForm() {
       }
 
       showAlert('Inicio de sesión exitoso', 'success');
-      router.push('/dashboard');
+      
+      // Redirigir según el tipo de usuario
+      if (email === 'cliente@casamia.com') {
+        router.push('/client');
+      } else {
+        router.push('/dashboard');
+      }
     } catch (error) {
       showAlert('Error al iniciar sesión', 'error');
       console.error('Login error:', error);

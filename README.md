@@ -39,7 +39,7 @@ Maqueta funcional para CasaMiaApp - Aplicación de fidelización para cafetería
 ```
 /app                 # Páginas y rutas de la aplicación
   /admin             # Panel de administración (Back Office)
-  /user              # Panel de cliente (UI del Cliente)
+  /client            # Panel de cliente (UI del Cliente)
   /dashboard         # Dashboard principal
   /operator          # Panel de operador
   

@@ -4,7 +4,7 @@ import { Box, Container, Typography, Paper, Grid, Card, CardContent } from '@mui
 import Header from '@/components/layout/Header';
 import { useUser } from '@/context/UserContext';
 
-export default function UserPage() {
+export default function ClientPage() {
   const { user, loading } = useUser();
   
   return (
@@ -16,10 +16,10 @@ export default function UserPage() {
           <Grid item xs={12}>
             <Paper sx={{ p: 3 }}>
               <Typography variant="h4" gutterBottom>
-                Panel de Usuario
+                Panel de Cliente CasaMia
               </Typography>
               <Typography variant="body1" paragraph>
-                Bienvenido al área de usuario. Aquí podrás gestionar tu perfil y acceder a las funciones básicas.
+                Bienvenido a tu área personal de CasaMia. Aquí podrás gestionar tu perfil, ver tus misiones y recompensas.
               </Typography>
               
               {user && (
@@ -45,10 +45,10 @@ export default function UserPage() {
             <Card>
               <CardContent>
                 <Typography variant="h5" component="div">
-                  Mis Datos
+                  Mis Misiones
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Gestiona tu información personal y preferencias.
+                  Completa misiones para ganar recompensas y puntos de fidelización.
                 </Typography>
               </CardContent>
             </Card>
@@ -58,10 +58,36 @@ export default function UserPage() {
             <Card>
               <CardContent>
                 <Typography variant="h5" component="div">
-                  Actividad Reciente
+                  Mi Billetera
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Revisa tu historial de actividades en el sistema.
+                  Revisa tu saldo acumulado y historial de transacciones.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Mis Recompensas
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Canjea tus puntos por productos gratuitos y descuentos.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          
+          <Grid item xs={12} md={6}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Mi Perfil
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Actualiza tu información personal y preferencias.
                 </Typography>
               </CardContent>
             </Card>
@@ -71,7 +97,7 @@ export default function UserPage() {
       
       <Box component="footer" sx={{ bgcolor: 'background.paper', py: 2, textAlign: 'center' }}>
         <Typography variant="body2" color="text.secondary">
-          NextJS MUI Auth Starter &copy; {new Date().getFullYear()}
+          CasaMia &copy; {new Date().getFullYear()}
         </Typography>
       </Box>
     </Box>

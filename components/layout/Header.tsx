@@ -72,7 +72,7 @@ export default function Header() {
     ];
     
     const userItems = [
-      { text: 'Mi Cuenta', icon: <AccountCircle />, path: '/user' },
+      { text: 'Mi Cuenta', icon: <AccountCircle />, path: '/client' },
     ];
     
     let items = [...commonItems];
