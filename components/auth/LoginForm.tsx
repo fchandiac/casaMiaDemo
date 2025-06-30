@@ -158,7 +158,6 @@ export default function LoginForm() {
                       >
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
-                      </IconButton>
                     </InputAdornment>
                   ),
                 }}
