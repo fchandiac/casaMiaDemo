@@ -92,7 +92,7 @@ export default function LoginForm() {
           color="text.secondary" 
           sx={{ mb: 3, textAlign: 'center' }}
         >
-          Accede a tu programa de fidelización
+          CasaMiaApp Demo
         </Typography>
         
         <Card sx={{ width: '100%', mt: 2, boxShadow: '0 8px 32px rgba(139, 69, 19, 0.1)' }}>

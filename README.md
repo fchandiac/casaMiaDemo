@@ -1,13 +1,14 @@
-# NextJS MUI Auth Starter
+# CasaMia
 
-Un proyecto base que integra NextJS, Material UI y NextAuth.js con roles de usuario (admin, user, operator).
+Maqueta funcional para CasaMiaApp - Aplicación de fidelización para cafetería con sistema gamificado de misiones y recompensas.
 
 ## Características
 
 - NextJS 14 con App Router
 - Material UI (MUI) para la interfaz de usuario
 - Autenticación con NextAuth.js
-- Soporte para múltiples roles (admin, user, operator)
+- Sistema de roles (cliente, operador, administrador)
+- Programa de fidelización gamificado
 - Pruebas E2E con WebdriverIO
 
 ## Cómo empezar
@@ -29,24 +30,25 @@ Un proyecto base que integra NextJS, Material UI y NextAuth.js con roles de usua
 
 ## Usuarios de prueba
 
-- Admin: admin@example.com / admin123
-- Usuario: user@example.com / user123
-- Operador: operator@example.com / operator123
+- Administrador: admin@casamia.com / admin123
+- Cliente: cliente@casamia.com / cliente123
+- Operador: operador@casamia.com / operador123
 
 ## Estructura del proyecto
 
 ```
 /app                 # Páginas y rutas de la aplicación
-  /admin             # Panel de administración
-  /user              # Panel de usuario
+  /admin             # Panel de administración (Back Office)
+  /user              # Panel de cliente (UI del Cliente)
   /dashboard         # Dashboard principal
   /operator          # Panel de operador
   
 /components          # Componentes reutilizables
   /auth              # Componentes de autenticación
   /layout            # Componentes de diseño (header, footer)
+  /SplashScreen      # Pantalla de bienvenida CasaMia
   
-/MUI                 # Configuración de Material UI
+/MUI                 # Configuración de Material UI con tema CasaMia
   
 /test                # Pruebas E2E con WebdriverIO
 ```
