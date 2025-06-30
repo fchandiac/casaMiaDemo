@@ -32,7 +32,9 @@ export default function ClientBottomBar() {
         right: 0, 
         zIndex: 1100,
         boxShadow: 'none',
-        borderTop: '3px solid #1976d2'
+        borderTop: '3px solid #1976d2',
+        padding: 0,
+        margin: 0
       }} 
       elevation={0}
     >
@@ -41,6 +43,9 @@ export default function ClientBottomBar() {
         onChange={(event, newValue) => setValue(newValue)}
         sx={{
           height: 70,
+          minHeight: 70,
+          maxHeight: 70,
+          padding: 0,
           '& .MuiBottomNavigationAction-root': {
             color: '#666',
             '&.Mui-selected': {

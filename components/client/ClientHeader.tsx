@@ -29,10 +29,19 @@ export default function ClientHeader() {
           boxShadow: 'none', 
           borderBottom: '3px solid #1976d2',
           top: 0,
-          zIndex: 1100
+          zIndex: 1100,
+          padding: 0,
+          margin: 0
         }}
       >
-        <Toolbar sx={{ minHeight: '80px' }}>
+        <Toolbar sx={{ 
+          minHeight: '70px',
+          height: '70px',
+          paddingLeft: '16px',
+          paddingRight: '16px',
+          paddingTop: 0,
+          paddingBottom: 0
+        }}>
           {/* Botón del menú */}
           <IconButton
             edge="start"

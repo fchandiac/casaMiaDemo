@@ -57,7 +57,7 @@ export default function BadgesPage() {
       <Container 
         maxWidth="md" 
         sx={{ 
-          mt: '100px', // Espacio para el top bar fijo
+          mt: '90px', // Espacio para el top bar fijo
           mb: '90px',  // Espacio para el bottom bar fijo
           flex: 1 
         }}

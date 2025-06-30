@@ -110,19 +110,35 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
         '& .MuiDrawer-paper': {
           width: 280,
           boxSizing: 'border-box',
-          border: '2px solid #ddd',
-          boxShadow: 'none'
+          border: 'none',
+          boxShadow: 'none',
+          padding: 0,
+          margin: 0
         },
       }}
     >
-      <Box sx={{ width: 280, bgcolor: '#f5f5f5', height: '100%' }}>
+      <Box sx={{ 
+        width: 280, 
+        bgcolor: '#f5f5f5', 
+        height: '100%',
+        padding: 0,
+        margin: 0,
+        border: 'none'
+      }}>
         {/* Header del Sidebar */}
         <Box sx={{ p: 3, bgcolor: '#1976d2', color: 'white', border: 'none' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-            <Avatar sx={{ width: 50, height: 50, bgcolor: 'white', color: '#1976d2', boxShadow: 'none' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2, border: 'none' }}>
+            <Avatar sx={{ 
+              width: 50, 
+              height: 50, 
+              bgcolor: 'white', 
+              color: '#1976d2', 
+              boxShadow: 'none',
+              border: 'none'
+            }}>
               C
             </Avatar>
-            <Box>
+            <Box sx={{ border: 'none' }}>
               <Typography variant="h6">Cliente</Typography>
               <Typography variant="body2" sx={{ opacity: 0.8 }}>
                 CasaMia
@@ -131,16 +147,44 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
           </Box>
           
           {/* Stats rápidas */}
-          <Box sx={{ display: 'flex', gap: 1 }}>
+          <Box sx={{ display: 'flex', gap: 1, border: 'none' }}>
             <Chip 
               label="$15.500" 
               size="small" 
-              sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.3)' }}
+              sx={{ 
+                bgcolor: 'rgba(255,255,255,0.2)', 
+                color: 'white',
+                border: 'none !important',
+                outline: 'none',
+                '& .MuiChip-label': {
+                  border: 'none !important'
+                },
+                '&:focus': {
+                  border: 'none !important'
+                },
+                '&:hover': {
+                  border: 'none !important'
+                }
+              }}
             />
             <Chip 
               label="3 Insignias" 
               size="small" 
-              sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.3)' }}
+              sx={{ 
+                bgcolor: 'rgba(255,255,255,0.2)', 
+                color: 'white',
+                border: 'none !important',
+                outline: 'none',
+                '& .MuiChip-label': {
+                  border: 'none !important'
+                },
+                '&:focus': {
+                  border: 'none !important'
+                },
+                '&:hover': {
+                  border: 'none !important'
+                }
+              }}
             />
           </Box>
         </Box>

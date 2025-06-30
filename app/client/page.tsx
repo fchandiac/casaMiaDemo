@@ -37,7 +37,7 @@ export default function ClientPage() {
       <Container 
         maxWidth="md" 
         sx={{ 
-          mt: '100px', // Espacio para el top bar fijo (80px + 20px margin)
+          mt: '90px', // Espacio para el top bar fijo (70px + 20px margin)
           mb: '90px',  // Espacio para el bottom bar fijo (70px + 20px margin)
           flex: 1 
         }}
