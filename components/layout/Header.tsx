@@ -99,7 +99,7 @@ export default function Header() {
           </IconButton>
           
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            NextJS MUI Auth Starter
+            CasaMia Demo App
           </Typography>
           
           {session?.user ? (
@@ -138,11 +138,7 @@ export default function Header() {
                 <MenuItem onClick={handleSignOut}>Cerrar Sesión</MenuItem>
               </Menu>
             </Box>
-          ) : (
-            <Button color="inherit" onClick={() => router.push('/')}>
-              Iniciar Sesión
-            </Button>
-          )}
+          ) : null}
         </Toolbar>
       </AppBar>
       
