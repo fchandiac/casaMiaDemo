@@ -17,13 +17,13 @@ import Link from 'next/link';
 
 export default function UserPage() {
   const attributes = [
-    { name: 'id', type: 'string', description: 'Unique identifier for the user' },
-    { name: 'name', type: 'string', description: 'User\'s full name' },
-    { name: 'email', type: 'string', description: 'User\'s email address' },
-    { name: 'password', type: 'string', description: 'User\'s encrypted password' },
-    { name: 'active', type: 'boolean', description: 'Whether the user account is active' },
-    { name: 'blocked', type: 'boolean', description: 'Whether the user account is blocked' },
-    { name: 'roleId', type: 'string', description: 'ID of the user\'s role' }
+    { name: 'id', type: 'string', description: 'Identificador único del usuario' },
+    { name: 'name', type: 'string', description: 'Nombre completo del usuario' },
+    { name: 'email', type: 'string', description: 'Dirección de correo electrónico del usuario' },
+    { name: 'password', type: 'string', description: 'Contraseña encriptada del usuario' },
+    { name: 'active', type: 'boolean', description: 'Si la cuenta del usuario está activa' },
+    { name: 'blocked', type: 'boolean', description: 'Si la cuenta del usuario está bloqueada' },
+    { name: 'roleId', type: 'string', description: 'ID del rol del usuario' }
   ];
 
   const relationships = [
