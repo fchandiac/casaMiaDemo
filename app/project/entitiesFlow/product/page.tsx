@@ -15,22 +15,22 @@ import {
 import { ArrowBack } from '@mui/icons-material';
 import Link from 'next/link';
 
-export default function ProductoPage() {
+export default function ProductPage() {
   const attributes = [
-    { name: 'id', type: 'number', description: 'Identificador único del producto' },
-    { name: 'nombre', type: 'string', description: 'Nombre del producto' },
-    { name: 'descripción', type: 'string', description: 'Descripción detallada del producto' },
-    { name: 'categoría', type: 'string', description: 'Categoría a la que pertenece el producto' },
-    { name: 'imagen', type: 'string', description: 'URL o referencia de la imagen del producto' },
-    { name: 'activo', type: 'boolean', description: 'Indica si el producto está activo' }
+    { name: 'id', type: 'string', description: 'Unique identifier for the product' },
+    { name: 'name', type: 'string', description: 'Product name' },
+    { name: 'description', type: 'string', description: 'Detailed product description' },
+    { name: 'category', type: 'string', description: 'Product category' },
+    { name: 'image', type: 'string', description: 'Product image URL or reference' },
+    { name: 'active', type: 'boolean', description: 'Whether the product is active' }
   ];
 
   const relationships = [
-    { entity: 'Imagen', type: '1:N', description: 'Un producto puede tener múltiples imágenes' },
-    { entity: 'TarjetaColección', type: '1:N', description: 'Un producto puede estar en múltiples tarjetas de colección' },
-    { entity: 'BuyProduct', type: '1:N', description: 'Un producto puede ser objetivo de múltiples misiones de compra' },
-    { entity: 'CalificaProducto', type: '1:N', description: 'Un producto puede tener múltiples calificaciones' },
-    { entity: 'Recompensa', type: '1:N', description: 'Un producto puede ser una recompensa' }
+    { entity: 'Image', type: '1:N', description: 'A product can have multiple images' },
+    { entity: 'CollectionCard', type: '1:N', description: 'A product can be in multiple collection cards' },
+    { entity: 'PurchaseMission', type: '1:N', description: 'A product can be target of multiple purchase missions' },
+    { entity: 'ProductRating', type: '1:N', description: 'A product can have multiple ratings' },
+    { entity: 'Reward', type: '1:N', description: 'A product can be a reward' }
   ];
 
   return (
@@ -38,30 +38,30 @@ export default function ProductoPage() {
       <Box sx={{ mb: 3 }}>
         <Link href="/project/entitiesFlow" passHref>
           <Button startIcon={<ArrowBack />} variant="outlined">
-            Volver al Diagrama
+            Back to Diagram
           </Button>
         </Link>
       </Box>
 
       <Typography variant="h3" component="h1" gutterBottom>
-        Producto
+        Product
       </Typography>
 
       <Typography variant="body1" paragraph sx={{ mb: 4 }}>
-        Elemento usado en misiones, no necesariamente vendido.
+        Element used in missions, not necessarily sold.
       </Typography>
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Atributos
+          Attributes
         </Typography>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Nombre</strong></TableCell>
-                <TableCell><strong>Tipo</strong></TableCell>
-                <TableCell><strong>Descripción</strong></TableCell>
+                <TableCell><strong>Name</strong></TableCell>
+                <TableCell><strong>Type</strong></TableCell>
+                <TableCell><strong>Description</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -79,15 +79,15 @@ export default function ProductoPage() {
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Relaciones
+          Relationships
         </Typography>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Entidad</strong></TableCell>
-                <TableCell><strong>Tipo</strong></TableCell>
-                <TableCell><strong>Descripción</strong></TableCell>
+                <TableCell><strong>Entity</strong></TableCell>
+                <TableCell><strong>Type</strong></TableCell>
+                <TableCell><strong>Description</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

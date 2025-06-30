@@ -17,15 +17,15 @@ import Link from 'next/link';
 
 export default function TriviaPage() {
   const attributes = [
-    { name: 'id', type: 'number', description: 'Identificador único de la trivia' },
-    { name: 'preguntas', type: 'string[]', description: 'Lista de preguntas de la trivia' },
-    { name: 'opciones', type: 'string[]', description: 'Opciones de respuesta para cada pregunta' },
-    { name: 'respuestaCorrecta', type: 'string', description: 'Respuesta correcta para cada pregunta' }
+    { name: 'id', type: 'string', description: 'Unique identifier for the trivia' },
+    { name: 'questions', type: 'string[]', description: 'List of trivia questions' },
+    { name: 'options', type: 'string[]', description: 'Answer options for each question' },
+    { name: 'correctAnswer', type: 'string', description: 'Correct answer for the trivia' }
   ];
 
   const relationships = [
-    { entity: 'Misión', type: 'extends', description: 'Es un tipo específico de misión' },
-    { entity: 'Usuario', type: 'N:M', description: 'Los usuarios pueden participar en trivias' }
+    { entity: 'Mission', type: 'extends', description: 'Is a specific type of mission' },
+    { entity: 'User', type: 'N:M', description: 'Users can answer trivia questions' }
   ];
 
   return (
@@ -33,7 +33,7 @@ export default function TriviaPage() {
       <Box sx={{ mb: 3 }}>
         <Link href="/project/entitiesFlow" passHref>
           <Button startIcon={<ArrowBack />} variant="outlined">
-            Volver al Diagrama
+            Back to Diagram
           </Button>
         </Link>
       </Box>
@@ -43,20 +43,20 @@ export default function TriviaPage() {
       </Typography>
 
       <Typography variant="body1" paragraph sx={{ mb: 4 }}>
-        Misión basada en preguntas de trivia. Recompensa por acierto.
+        Mission based on trivia questions. Reward for correct answer.
       </Typography>
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Atributos
+          Attributes
         </Typography>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Nombre</strong></TableCell>
-                <TableCell><strong>Tipo</strong></TableCell>
-                <TableCell><strong>Descripción</strong></TableCell>
+                <TableCell><strong>Name</strong></TableCell>
+                <TableCell><strong>Type</strong></TableCell>
+                <TableCell><strong>Description</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -74,15 +74,15 @@ export default function TriviaPage() {
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Relaciones
+          Relationships
         </Typography>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Entidad</strong></TableCell>
-                <TableCell><strong>Tipo</strong></TableCell>
-                <TableCell><strong>Descripción</strong></TableCell>
+                <TableCell><strong>Entity</strong></TableCell>
+                <TableCell><strong>Type</strong></TableCell>
+                <TableCell><strong>Description</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
