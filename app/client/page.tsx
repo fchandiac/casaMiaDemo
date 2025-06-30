@@ -24,19 +24,19 @@ import {
   Star,
   Notifications
 } from '@mui/icons-material';
-import Header from '@/components/layout/Header';
+import ClientHeader from '@/components/client/ClientHeader';
 
 export default function ClientPage() {
   
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: '#f5f5f5' }}>
-      <Header />
+      <ClientHeader />
       
       <Container maxWidth="md" sx={{ mt: 2, mb: 4, flex: 1 }}>
         {/* Header de Usuario */}
-        <Paper sx={{ p: 3, mb: 3, border: '2px solid #ddd' }}>
+        <Paper sx={{ p: 3, mb: 3, border: '2px solid #ddd', boxShadow: 'none' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Avatar sx={{ width: 60, height: 60, bgcolor: '#1976d2' }}>U</Avatar>
+            <Avatar sx={{ width: 60, height: 60, bgcolor: '#1976d2', boxShadow: 'none' }}>U</Avatar>
             <Box>
               <Typography variant="h5">Bienvenido, Usuario</Typography>
               <Typography variant="body2" color="text.secondary">Cliente CasaMia</Typography>
@@ -47,7 +47,7 @@ export default function ClientPage() {
         {/* Billetera y Resumen */}
         <Grid container spacing={2} sx={{ mb: 3 }}>
           <Grid item xs={6}>
-            <Card sx={{ border: '2px solid #ddd', textAlign: 'center' }}>
+            <Card sx={{ border: '2px solid #ddd', textAlign: 'center', boxShadow: 'none' }}>
               <CardContent>
                 <AccountBalanceWallet sx={{ fontSize: 40, color: '#4caf50', mb: 1 }} />
                 <Typography variant="h6">Billetera</Typography>
@@ -57,7 +57,7 @@ export default function ClientPage() {
             </Card>
           </Grid>
           <Grid item xs={6}>
-            <Card sx={{ border: '2px solid #ddd', textAlign: 'center' }}>
+            <Card sx={{ border: '2px solid #ddd', textAlign: 'center', boxShadow: 'none' }}>
               <CardContent>
                 <EmojiEvents sx={{ fontSize: 40, color: '#ff9800', mb: 1 }} />
                 <Typography variant="h6">Insignias</Typography>
@@ -69,14 +69,14 @@ export default function ClientPage() {
         </Grid>
 
         {/* Misiones Activas */}
-        <Paper sx={{ p: 3, mb: 3, border: '2px solid #ddd' }}>
+        <Paper sx={{ p: 3, mb: 3, border: '2px solid #ddd', boxShadow: 'none' }}>
           <Typography variant="h6" sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
             <Assignment /> Misiones Activas
           </Typography>
           
           <Stack spacing={2}>
             {/* Misión 1 - Estoy en CasaMia */}
-            <Card sx={{ border: '1px solid #eee' }}>
+            <Card sx={{ border: '1px solid #eee', boxShadow: 'none' }}>
               <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -96,7 +96,7 @@ export default function ClientPage() {
             </Card>
 
             {/* Misión 2 - Escanear QR */}
-            <Card sx={{ border: '1px solid #eee' }}>
+            <Card sx={{ border: '1px solid #eee', boxShadow: 'none' }}>
               <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -116,7 +116,7 @@ export default function ClientPage() {
             </Card>
 
             {/* Misión 3 - Comprar Producto */}
-            <Card sx={{ border: '1px solid #eee' }}>
+            <Card sx={{ border: '1px solid #eee', boxShadow: 'none' }}>
               <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -138,14 +138,14 @@ export default function ClientPage() {
         </Paper>
 
         {/* Recompensas Disponibles */}
-        <Paper sx={{ p: 3, mb: 3, border: '2px solid #ddd' }}>
+        <Paper sx={{ p: 3, mb: 3, border: '2px solid #ddd', boxShadow: 'none' }}>
           <Typography variant="h6" sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
             <EmojiEvents /> Recompensas Disponibles
           </Typography>
           
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <Card sx={{ border: '1px solid #eee', textAlign: 'center' }}>
+              <Card sx={{ border: '1px solid #eee', textAlign: 'center', boxShadow: 'none' }}>
                 <CardContent>
                   <Typography variant="subtitle1">Café Gratis</Typography>
                   <Typography variant="body2" color="text.secondary">
@@ -158,7 +158,7 @@ export default function ClientPage() {
               </Card>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Card sx={{ border: '1px solid #eee', textAlign: 'center' }}>
+              <Card sx={{ border: '1px solid #eee', textAlign: 'center', boxShadow: 'none' }}>
                 <CardContent>
                   <Typography variant="subtitle1">20% Descuento</Typography>
                   <Typography variant="body2" color="text.secondary">
@@ -174,7 +174,7 @@ export default function ClientPage() {
         </Paper>
 
         {/* Acciones Rápidas */}
-        <Paper sx={{ p: 3, border: '2px solid #ddd' }}>
+        <Paper sx={{ p: 3, border: '2px solid #ddd', boxShadow: 'none' }}>
           <Typography variant="h6" sx={{ mb: 2 }}>Acciones Rápidas</Typography>
           
           <Grid container spacing={2}>
@@ -182,7 +182,7 @@ export default function ClientPage() {
               <Button 
                 variant="outlined" 
                 fullWidth 
-                sx={{ p: 2, flexDirection: 'column', gap: 1, border: '2px solid #ddd' }}
+                sx={{ p: 2, flexDirection: 'column', gap: 1, border: '2px solid #ddd', boxShadow: 'none' }}
               >
                 <QrCodeScanner />
                 <Typography variant="caption">Escanear QR</Typography>
@@ -192,7 +192,7 @@ export default function ClientPage() {
               <Button 
                 variant="outlined" 
                 fullWidth 
-                sx={{ p: 2, flexDirection: 'column', gap: 1, border: '2px solid #ddd' }}
+                sx={{ p: 2, flexDirection: 'column', gap: 1, border: '2px solid #ddd', boxShadow: 'none' }}
               >
                 <LocationOn />
                 <Typography variant="caption">Estoy aquí</Typography>
@@ -202,7 +202,7 @@ export default function ClientPage() {
               <Button 
                 variant="outlined" 
                 fullWidth 
-                sx={{ p: 2, flexDirection: 'column', gap: 1, border: '2px solid #ddd' }}
+                sx={{ p: 2, flexDirection: 'column', gap: 1, border: '2px solid #ddd', boxShadow: 'none' }}
               >
                 <Star />
                 <Typography variant="caption">Calificar</Typography>
@@ -212,7 +212,7 @@ export default function ClientPage() {
               <Button 
                 variant="outlined" 
                 fullWidth 
-                sx={{ p: 2, flexDirection: 'column', gap: 1, border: '2px solid #ddd' }}
+                sx={{ p: 2, flexDirection: 'column', gap: 1, border: '2px solid #ddd', boxShadow: 'none' }}
               >
                 <Notifications />
                 <Typography variant="caption">Notificaciones</Typography>
