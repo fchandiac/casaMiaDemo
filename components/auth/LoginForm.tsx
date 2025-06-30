@@ -41,14 +41,14 @@ export default function LoginForm() {
       });
 
       if (!result?.ok) {
-        showAlert('❌ Credenciales inválidas. ¡Revisa tu correo y contraseña!', 'error');
+        showAlert('Credenciales inválidas', 'error');
         return;
       }
 
-      showAlert('✅ ¡Bienvenido a CasaMia! ☕', 'success');
+      showAlert('Inicio de sesión exitoso', 'success');
       router.push('/dashboard');
     } catch (error) {
-      showAlert('☕ Algo salió mal. ¡Inténtalo de nuevo!', 'error');
+      showAlert('Error al iniciar sesión', 'error');
       console.error('Login error:', error);
     } finally {
       setLoading(false);
@@ -75,14 +75,6 @@ export default function LoginForm() {
           component="h1" 
           variant="h4" 
           gutterBottom
-          sx={{
-            background: 'linear-gradient(45deg, #8B4513, #CD853F)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            fontWeight: 700,
-            mb: 1
-          }}
         >
           CasaMia
         </Typography>
@@ -95,8 +87,8 @@ export default function LoginForm() {
           CasaMiaApp Demo
         </Typography>
         
-        <Card sx={{ width: '100%', mt: 2, boxShadow: '0 8px 32px rgba(139, 69, 19, 0.1)' }}>
-          <CardContent sx={{ p: 4 }}>
+        <Card sx={{ width: '100%', mt: 2 }}>
+          <CardContent>
             <Box component="form" onSubmit={handleSubmit} noValidate>
               <TextField
                 margin="normal"
@@ -109,19 +101,6 @@ export default function LoginForm() {
                 autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    '&:hover fieldset': {
-                      borderColor: '#8B4513',
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: '#8B4513',
-                    },
-                  },
-                  '& .MuiInputLabel-root.Mui-focused': {
-                    color: '#8B4513',
-                  },
-                }}
               />
               <TextField
                 margin="normal"
@@ -134,19 +113,6 @@ export default function LoginForm() {
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    '&:hover fieldset': {
-                      borderColor: '#8B4513',
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: '#8B4513',
-                    },
-                  },
-                  '& .MuiInputLabel-root.Mui-focused': {
-                    color: '#8B4513',
-                  },
-                }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -154,7 +120,6 @@ export default function LoginForm() {
                         aria-label="mostrar/ocultar contraseña"
                         onClick={handleShowPassword}
                         edge="end"
-                        sx={{ color: '#8B4513' }}
                       >
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
@@ -166,60 +131,25 @@ export default function LoginForm() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ 
-                  mt: 3, 
-                  mb: 2,
-                  background: 'linear-gradient(45deg, #8B4513, #CD853F)',
-                  '&:hover': {
-                    background: 'linear-gradient(45deg, #704010, #B8860B)',
-                  },
-                  boxShadow: '0 4px 16px rgba(139, 69, 19, 0.3)',
-                  py: 1.5,
-                  fontSize: '1.1rem',
-                  fontWeight: 600
-                }}
+                sx={{ mt: 3, mb: 2 }}
                 disabled={loading}
               >
-                {loading ? '☕ Preparando tu acceso...' : '🔑 Iniciar Sesión'}
+                {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
               </Button>
             </Box>
             
-            <Typography variant="body2" color="textSecondary" align="center" sx={{ mt: 3, mb: 2 }}>
-              🧪 Usuarios de prueba para testing:
+            <Typography variant="body2" color="textSecondary" align="center" sx={{ mt: 2 }}>
+              Usuarios de prueba:
             </Typography>
-            <Box sx={{ 
-              mt: 1, 
-              bgcolor: '#FFF8DC', 
-              p: 2, 
-              borderRadius: 2,
-              border: '1px solid #DEB887'
-            }}>
-              <Typography variant="body2" component="div" sx={{ mb: 1, fontWeight: 500 }}>
-                👑 <strong>Administrador:</strong> admin@casamia.com / admin123
+            <Box sx={{ mt: 1, bgcolor: 'background.paper', p: 1, borderRadius: 1 }}>
+              <Typography variant="body2" component="div">
+                Administrador: admin@casamia.com / admin123
               </Typography>
-              <Typography variant="body2" component="div" sx={{ mb: 1, fontWeight: 500 }}>
-                ☕ <strong>Cliente:</strong> cliente@casamia.com / cliente123
+              <Typography variant="body2" component="div">
+                Cliente: cliente@casamia.com / cliente123
               </Typography>
-              <Typography variant="body2" component="div" sx={{ fontWeight: 500 }}>
-                🛠️ <strong>Operador:</strong> operador@casamia.com / operador123
-              </Typography>
-            </Box>
-            
-            {/* Mensaje motivacional */}
-            <Box sx={{ mt: 3, textAlign: 'center' }}>
-              <Typography 
-                variant="caption" 
-                sx={{ 
-                  color: '#8B4513',
-                  fontStyle: 'italic',
-                  display: 'block',
-                  mb: 1
-                }}
-              >
-                "¡Completa misiones, gana recompensas y disfruta de tu café favorito!"
-              </Typography>
-              <Typography variant="caption" color="text.secondary">
-                ☕ Cada visita cuenta • 🎁 Cada punto importa • ❤️ Cada momento es especial
+              <Typography variant="body2" component="div">
+                Operador: operador@casamia.com / operador123
               </Typography>
             </Box>
           </CardContent>
