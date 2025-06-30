@@ -1,0 +1,26 @@
+Entidad              | Atributos                                                                                     | Descripción
+---------------------|-----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------
+Usuario              | id, name, mail, pass, active, blocked, rolId                                                 | Representa a una persona que hace uso de la aplicación e interactúa con la interfaz. Puede tener roles como cliente, operador o administrador.
+Perfil               | id, usuarioID, userSegmentOptions                                                            | Compuesto por múltiples opciones de segmentación. Define grupos con listas, checks o valores numéricos.
+Rol                  | id, nombre, tipo, permisos                                                                   | Define accesos y permisos. Puede ser cliente, operador o administrador.
+Segmento             | id, nombre, jsonSegmentOptions                                                               | Agrupa usuarios por criterios definidos por el administrador.
+SegmentOptions       | id, nombre, tipo, jsonOpciones, available                                                    | Preguntas de segmentación. Puede ser selección múltiple, valor numérico, etc.
+UserSegmentOptions   | id, usuarioID, segmentOptionsID, texto, opciónSeleccionada                                   | Guarda respuestas a segmentación para asignar a segmentos.
+Billetera            | id, usuarioID, saldoActual, saldoAnterior                                                    | Cuenta virtual del usuario para recompensas en dinero.
+MovimientosBilletera| id, usuarioID, tipo, saldoPrevio, saldoPosterior, billeteraID, recompensa                    | Registro de transacciones de la billetera.
+Insignia             | id, imagen, fechaExpiración, beneficio, userID                                               | Recompensa simbólica o funcional asociada a beneficios.
+Producto             | id, nombre, descripción, categoría, imagen, activo                                           | Elemento usado en misiones, no necesariamente vendido.
+Imagen               | id, url, referenceID, tipoRef                                                                | Archivo visual usado por productos, misiones u otras entidades.
+TarjetaColección     | id, usuarioID, meta, fechaEmisión, fechaExpiración, current, productoID, nombre, imagen, id_recompensa | Tarjeta coleccionable que acumula productos para recompensa.
+Recompensa           | id, tipo, fechaValidez, valor, id_producto, estado, id_insigniaID                            | Premio por cumplir misión o acción. Puede ser dinero, producto, cupón o insignia.
+Misión               | id, nombre, tipo, id_recompensa, id_usuario, descripción, fechaInicio, fechaFin, frecuencia, json, imagen | Reto que entrega recompensa al ser completado.
+Encuesta             | id, preguntas, opciones, respuestaCorrecta                                                  | Misión tipo encuesta para validar respuestas.
+Trivia               | id, preguntas, opciones, respuestaCorrecta                                                  | Misión basada en preguntas de trivia. Recompensa por acierto.
+EstoyEnCasaMia       | id, localID, nombre, descripción, lat, long, radio                                           | Misión GPS para validar presencia en tienda física.
+FindQRCode           | id, código, localID                                                                          | Misión tipo búsqueda. Escanear QR oculto.
+BuyProduct           | id, productoID, nombre, descripción, fecha, usuarioID                                        | Misión que requiere comprar producto y validarlo.
+CalificaProducto     | productoID, usuarioID, calificación, comentario, fecha                                       | Permite calificar productos.
+MenuScan             | id, date, lat, lon, storeID                                                                  | Escaneo de menú QR en tienda. Registra visita o recompensa.
+Boleta               | id, usuarioID, imagen, fechaCompra, montoTotal, id_recompensa                                | Registro de boleta escaneada que puede generar recompensa.
+Notificación         | id, usuarioID, tipo, título, mensaje, fechaEnvío, leída                                      | Mensaje enviado al usuario desde el sistema o admin.
+Tienda               | id, nombre, dirección, latitud, longitud                                                     | Representa tienda física usada para misiones GPS o registro de compras.
