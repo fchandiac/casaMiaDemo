@@ -56,7 +56,7 @@ export default function LoginForm() {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" sx={{ backgroundColor: 'white', mb: 4 }}>
       <Box sx={{ mt: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         {/* Logo de CasaMia */}
         <Box sx={{ mb: 3 }}>
