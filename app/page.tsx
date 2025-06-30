@@ -1,7 +1,7 @@
 'use client';
 
 import LoginForm from '@/components/auth/LoginForm';
-import { Box, Container, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -24,21 +24,9 @@ export default function Home() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(to right, #f5f7fa, #c3cfe2)',
       }}
     >
-      <Container maxWidth="md">
-        <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <Typography variant="h2" component="h1" gutterBottom>
-            NextJS MUI Auth Starter
-          </Typography>
-          <Typography variant="h5" color="textSecondary" gutterBottom>
-            Una plantilla para proyectos con NextJS, Material UI y NextAuth
-          </Typography>
-        </Box>
-        
-        <LoginForm />
-      </Container>
+      <LoginForm />
     </Box>
   );
 }
