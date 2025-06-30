@@ -203,6 +203,23 @@ export default function EntitiesPage() {
     return colors[category as keyof typeof colors] || '#666666';
   };
 
+  const getCategoryTitle = (category: string) => {
+    const titles = {
+      'Core': 'Entidades de Identidad',
+      'Financial': 'Entidades Financieras',
+      'Catalog': 'Entidades de Catálogo',
+      'Media': 'Entidades de Medios',
+      'Gamification': 'Entidades de Gamificación',
+      'Rewards': 'Entidades de Recompensas',
+      'Location': 'Entidades de Ubicación',
+      'Transaction': 'Entidades de Transacción',
+      'Engagement': 'Entidades de Interacción',
+      'Communication': 'Entidades de Comunicación',
+      'Segmentation': 'Entidades de Segmentación'
+    };
+    return titles[category as keyof typeof titles] || category;
+  };
+
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
       <Box sx={{ mb: 6, textAlign: 'center' }}>
@@ -232,7 +249,7 @@ export default function EntitiesPage() {
                 }} 
               />
               <Typography variant="h4" component="h2" sx={{ fontWeight: 'medium' }}>
-                {category === 'Core' ? 'Entidades de Identidad' : `${category} Entities`}
+                {getCategoryTitle(category)}
               </Typography>
             </Box>
             
