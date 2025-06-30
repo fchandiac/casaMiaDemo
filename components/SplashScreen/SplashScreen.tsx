@@ -102,11 +102,11 @@ export default function SplashScreen({ onComplete, duration = 8000 }: SplashScre
             >
               <Image
                 src="/logo.svg"
-                alt="NextJS MUI Auth Starter"
-                width={140}
-                height={140}
+                alt="CasaMia - Tu cafetería de confianza"
+                width={160}
+                height={160}
                 style={{
-                  filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.2))',
+                  filter: 'drop-shadow(0 8px 16px rgba(139, 69, 19, 0.3))',
                 }}
               />
             </Box>
@@ -120,21 +120,24 @@ export default function SplashScreen({ onComplete, duration = 8000 }: SplashScre
                 component="h1"
                 sx={{
                   fontWeight: 700,
-                  color: theme.palette.primary.main,
+                  background: 'linear-gradient(45deg, #8B4513, #CD853F)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
                   animation: titleVisible 
                     ? 'textGlow 2s ease-in-out infinite alternate' 
                     : 'none',
                   '@keyframes textGlow': {
                     '0%': {
-                      color: theme.palette.primary.main,
+                      filter: 'brightness(1)',
                     },
                     '100%': {
-                      color: theme.palette.primary.light,
+                      filter: 'brightness(1.2)',
                     },
                   },
                 }}
               >
-                NextJS MUI Auth Starter
+                CasaMia
               </Typography>
             </Box>
           </Fade>
@@ -162,7 +165,7 @@ export default function SplashScreen({ onComplete, duration = 8000 }: SplashScre
                 },
               }}
             >
-              Una plantilla para proyectos con NextJS, Material UI y NextAuth
+              Tu cafetería de confianza
             </Typography>
           </Fade>
 
@@ -177,7 +180,7 @@ export default function SplashScreen({ onComplete, duration = 8000 }: SplashScre
                 fontWeight: 500,
               }}
             >
-              Versión 1.0.0
+              Programa de Fidelización ☕
             </Typography>
           </Fade>
 
@@ -194,10 +197,10 @@ export default function SplashScreen({ onComplete, duration = 8000 }: SplashScre
                 <Box
                   key={index}
                   sx={{
-                    width: 8,
-                    height: 8,
+                    width: 10,
+                    height: 10,
                     borderRadius: '50%',
-                    backgroundColor: theme.palette.primary.main,
+                    backgroundColor: '#8B4513',
                     animation: `loadingDots 1.5s ease-in-out infinite`,
                     animationDelay: `${index * 0.2}s`,
                     '@keyframes loadingDots': {
@@ -232,7 +235,7 @@ export default function SplashScreen({ onComplete, duration = 8000 }: SplashScre
                   fontSize: '0.75rem',
                 }}
               >
-                © {new Date().getFullYear()} - Desarrollado con ❤️
+                © {new Date().getFullYear()} CasaMia - Desarrollado con ❤️ para nuestros clientes
               </Typography>
             </Box>
           </Fade>
