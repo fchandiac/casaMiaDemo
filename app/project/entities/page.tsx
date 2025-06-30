@@ -313,7 +313,7 @@ export default function EntitiesPage() {
                                 fontWeight: 'medium'
                               }}
                             >
-                              Click to view details →
+                              Detalles →
                             </Typography>
                           </Box>
                         </CardContent>
@@ -329,11 +329,11 @@ export default function EntitiesPage() {
 
       <Box sx={{ mt: 6, p: 3, backgroundColor: '#f5f5f5', borderRadius: 2, textAlign: 'center' }}>
         <Typography variant="h6" gutterBottom>
-          Entity Relationship Diagram
+          Diagrama de Relación de Entidades
         </Typography>
         <Typography variant="body2" color="text.secondary" paragraph>
-          For a visual representation of how all these entities connect and relate to each other, 
-          visit the interactive flow diagram.
+          Para una representación visual de cómo todas estas entidades se conectan y se relacionan entre sí, 
+          visita el diagrama de flujo interactivo.
         </Typography>
         <Link href="/project/entitiesFlow" passHref>
           <Box 
@@ -355,7 +355,7 @@ export default function EntitiesPage() {
               }
             }}
           >
-            View Entities Flow Diagram
+            Ver Diagrama de Flujo de Entidades
           </Box>
         </Link>
       </Box>
