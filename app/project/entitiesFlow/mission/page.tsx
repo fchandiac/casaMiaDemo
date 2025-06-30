@@ -17,66 +17,71 @@ import Link from 'next/link';
 
 export default function MissionPage() {
   const attributes = [
-    { name: 'id', type: 'string', description: 'Unique identifier for the mission' },
-    { name: 'name', type: 'string', description: 'Mission name' },
-    { name: 'type', type: 'string', description: 'Mission type' },
-    { name: 'rewardId', type: 'string', description: 'ID of the reward for completing the mission' },
-    { name: 'userId', type: 'string', description: 'ID of the user assigned to the mission' },
-    { name: 'description', type: 'string', description: 'Mission description' },
-    { name: 'startDate', type: 'Date', description: 'Mission start date' },
-    { name: 'endDate', type: 'Date', description: 'Mission end date' },
-    { name: 'frequency', type: 'string', description: 'Mission frequency' },
-    { name: 'json', type: 'JSON', description: 'Additional mission configuration' },
-    { name: 'image', type: 'string', description: 'Mission image URL or reference' }
+    { name: 'id', type: 'string', description: 'Identificador único de la misión' },
+    { name: 'name', type: 'string', description: 'Nombre de la misión' },
+    { name: 'type', type: 'string', description: 'Tipo de misión' },
+    { name: 'rewardId', type: 'string', description: 'ID de la recompensa al completar la misión' },
+    { name: 'userId', type: 'string', description: 'ID del usuario asignado a la misión' },
+    { name: 'description', type: 'string', description: 'Descripción de la misión' },
+    { name: 'startDate', type: 'Date', description: 'Fecha de inicio de la misión' },
+    { name: 'endDate', type: 'Date', description: 'Fecha de término de la misión' },
+    { name: 'frequency', type: 'string', description: 'Frecuencia de la misión' },
+    { name: 'json', type: 'JSON', description: 'Configuración adicional de la misión' },
+    { name: 'image', type: 'string', description: 'URL o referencia de la imagen de la misión' }
   ];
 
   const relationships = [
-    { entity: 'User', type: 'N:1', description: 'A mission belongs to a user' },
-    { entity: 'Reward', type: '1:1', description: 'A mission has one reward' },
-    { entity: 'Survey', type: 'extends', description: 'Survey is a type of mission' },
-    { entity: 'Trivia', type: 'extends', description: 'Trivia is a type of mission' },
-    { entity: 'LocationMission', type: 'extends', description: 'Location mission is a type of mission' },
-    { entity: 'QRCodeMission', type: 'extends', description: 'QR code mission is a type of mission' },
-    { entity: 'PurchaseMission', type: 'extends', description: 'Purchase mission is a type of mission' }
+    { entity: 'Usuario', type: 'N:1', description: 'Una misión pertenece a un usuario' },
+    { entity: 'Recompensa', type: '1:1', description: 'Una misión tiene una recompensa' },
+    { entity: 'Encuesta', type: 'extends', description: 'La encuesta es un tipo de misión' },
+    { entity: 'Trivia', type: 'extends', description: 'La trivia es un tipo de misión' },
+    { entity: 'MisiónGPS', type: 'extends', description: 'La misión GPS es un tipo de misión' },
+    { entity: 'MisiónQR', type: 'extends', description: 'La misión QR es un tipo de misión' },
+    { entity: 'MisiónCompra', type: 'extends', description: 'La misión de compra es un tipo de misión' }
   ];
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ mb: 3 }}>
+      <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
+        <Link href="/project/entities" passHref>
+          <Button startIcon={<ArrowBack />} variant="outlined">
+            Volver a Entidades
+          </Button>
+        </Link>
         <Link href="/project/entitiesFlow" passHref>
           <Button startIcon={<ArrowBack />} variant="outlined">
-            Back to Diagram
+            Volver al Diagrama
           </Button>
         </Link>
       </Box>
 
       <Typography variant="h3" component="h1" gutterBottom>
-        Mission
+        Misión
       </Typography>
 
       <Typography variant="body1" paragraph sx={{ mb: 4 }}>
-        Challenge that delivers reward when completed.
+        Desafío que entrega recompensa al ser completado.
       </Typography>
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Attributes
+          Atributos
         </Typography>
-        <TableContainer component={Paper}>
-          <Table>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid #e0e0e0' }}>
+          <Table sx={{ border: '1px solid #e0e0e0' }}>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Name</strong></TableCell>
-                <TableCell><strong>Type</strong></TableCell>
-                <TableCell><strong>Description</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Nombre</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Tipo</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Descripción</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {attributes.map((attr) => (
                 <TableRow key={attr.name}>
-                  <TableCell>{attr.name}</TableCell>
-                  <TableCell>{attr.type}</TableCell>
-                  <TableCell>{attr.description}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.name}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.type}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.description}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -86,23 +91,23 @@ export default function MissionPage() {
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Relationships
+          Relaciones
         </Typography>
-        <TableContainer component={Paper}>
-          <Table>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid #e0e0e0' }}>
+          <Table sx={{ border: '1px solid #e0e0e0' }}>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Entity</strong></TableCell>
-                <TableCell><strong>Type</strong></TableCell>
-                <TableCell><strong>Description</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Entidad</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Tipo</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Descripción</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {relationships.map((rel, index) => (
                 <TableRow key={index}>
-                  <TableCell>{rel.entity}</TableCell>
-                  <TableCell>{rel.type}</TableCell>
-                  <TableCell>{rel.description}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.entity}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.type}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.description}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

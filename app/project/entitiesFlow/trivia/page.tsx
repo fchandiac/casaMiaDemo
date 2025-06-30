@@ -17,23 +17,28 @@ import Link from 'next/link';
 
 export default function TriviaPage() {
   const attributes = [
-    { name: 'id', type: 'string', description: 'Unique identifier for the trivia' },
-    { name: 'questions', type: 'string[]', description: 'List of trivia questions' },
-    { name: 'options', type: 'string[]', description: 'Answer options for each question' },
-    { name: 'correctAnswer', type: 'string', description: 'Correct answer for the trivia' }
+    { name: 'id', type: 'string', description: 'Identificador único de la trivia' },
+    { name: 'questions', type: 'string[]', description: 'Lista de preguntas de la trivia' },
+    { name: 'options', type: 'string[]', description: 'Opciones de respuesta para cada pregunta' },
+    { name: 'correctAnswer', type: 'string', description: 'Respuesta correcta de la trivia' }
   ];
 
   const relationships = [
-    { entity: 'Mission', type: 'extends', description: 'Is a specific type of mission' },
-    { entity: 'User', type: 'N:M', description: 'Users can answer trivia questions' }
+    { entity: 'Misión', type: 'extends', description: 'Es un tipo específico de misión' },
+    { entity: 'Usuario', type: 'N:M', description: 'Los usuarios pueden responder preguntas de trivia' }
   ];
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ mb: 3 }}>
+      <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
+        <Link href="/project/entities" passHref>
+          <Button startIcon={<ArrowBack />} variant="outlined">
+            Volver a Entidades
+          </Button>
+        </Link>
         <Link href="/project/entitiesFlow" passHref>
           <Button startIcon={<ArrowBack />} variant="outlined">
-            Back to Diagram
+            Volver al Diagrama
           </Button>
         </Link>
       </Box>
@@ -43,28 +48,28 @@ export default function TriviaPage() {
       </Typography>
 
       <Typography variant="body1" paragraph sx={{ mb: 4 }}>
-        Mission based on trivia questions. Reward for correct answer.
+        Misión basada en preguntas de trivia. Recompensa por respuesta correcta.
       </Typography>
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Attributes
+          Atributos
         </Typography>
-        <TableContainer component={Paper}>
-          <Table>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid #e0e0e0' }}>
+          <Table sx={{ border: '1px solid #e0e0e0' }}>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Name</strong></TableCell>
-                <TableCell><strong>Type</strong></TableCell>
-                <TableCell><strong>Description</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Nombre</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Tipo</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Descripción</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {attributes.map((attr) => (
                 <TableRow key={attr.name}>
-                  <TableCell>{attr.name}</TableCell>
-                  <TableCell>{attr.type}</TableCell>
-                  <TableCell>{attr.description}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.name}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.type}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.description}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -74,23 +79,23 @@ export default function TriviaPage() {
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Relationships
+          Relaciones
         </Typography>
-        <TableContainer component={Paper}>
-          <Table>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid #e0e0e0' }}>
+          <Table sx={{ border: '1px solid #e0e0e0' }}>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Entity</strong></TableCell>
-                <TableCell><strong>Type</strong></TableCell>
-                <TableCell><strong>Description</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Entidad</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Tipo</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Descripción</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {relationships.map((rel, index) => (
                 <TableRow key={index}>
-                  <TableCell>{rel.entity}</TableCell>
-                  <TableCell>{rel.type}</TableCell>
-                  <TableCell>{rel.description}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.entity}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.type}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.description}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

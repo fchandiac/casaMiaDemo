@@ -17,54 +17,59 @@ import Link from 'next/link';
 
 export default function WalletPage() {
   const attributes = [
-    { name: 'id', type: 'string', description: 'Unique identifier for the wallet' },
-    { name: 'userId', type: 'string', description: 'ID of the user who owns the wallet' },
-    { name: 'currentBalance', type: 'number', description: 'Current balance in the wallet' },
-    { name: 'previousBalance', type: 'number', description: 'Previous recorded balance' }
+    { name: 'id', type: 'string', description: 'Identificador único de la billetera' },
+    { name: 'userId', type: 'string', description: 'ID del usuario propietario de la billetera' },
+    { name: 'currentBalance', type: 'number', description: 'Saldo actual en la billetera' },
+    { name: 'previousBalance', type: 'number', description: 'Saldo previo registrado' }
   ];
 
   const relationships = [
-    { entity: 'User', type: 'N:1', description: 'A wallet belongs to a user' },
-    { entity: 'WalletMovement', type: '1:N', description: 'A wallet can have multiple movements' }
+    { entity: 'Usuario', type: 'N:1', description: 'Una billetera pertenece a un usuario' },
+    { entity: 'MovimientoBilletera', type: '1:N', description: 'Una billetera puede tener múltiples movimientos' }
   ];
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ mb: 3 }}>
+      <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
+        <Link href="/project/entities" passHref>
+          <Button startIcon={<ArrowBack />} variant="outlined">
+            Volver a Entidades
+          </Button>
+        </Link>
         <Link href="/project/entitiesFlow" passHref>
           <Button startIcon={<ArrowBack />} variant="outlined">
-            Back to Diagram
+            Volver al Diagrama
           </Button>
         </Link>
       </Box>
 
       <Typography variant="h3" component="h1" gutterBottom>
-        Wallet
+        Billetera
       </Typography>
 
       <Typography variant="body1" paragraph sx={{ mb: 4 }}>
-        Virtual account for user rewards in money.
+        Cuenta virtual para recompensas del usuario en dinero.
       </Typography>
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Attributes
+          Atributos
         </Typography>
-        <TableContainer component={Paper}>
-          <Table>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid #e0e0e0' }}>
+          <Table sx={{ border: '1px solid #e0e0e0' }}>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Name</strong></TableCell>
-                <TableCell><strong>Type</strong></TableCell>
-                <TableCell><strong>Description</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Nombre</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Tipo</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Descripción</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {attributes.map((attr) => (
                 <TableRow key={attr.name}>
-                  <TableCell>{attr.name}</TableCell>
-                  <TableCell>{attr.type}</TableCell>
-                  <TableCell>{attr.description}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.name}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.type}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.description}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -74,23 +79,23 @@ export default function WalletPage() {
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Relationships
+          Relaciones
         </Typography>
-        <TableContainer component={Paper}>
-          <Table>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid #e0e0e0' }}>
+          <Table sx={{ border: '1px solid #e0e0e0' }}>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Entity</strong></TableCell>
-                <TableCell><strong>Type</strong></TableCell>
-                <TableCell><strong>Description</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Entidad</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Tipo</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Descripción</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {relationships.map((rel, index) => (
                 <TableRow key={index}>
-                  <TableCell>{rel.entity}</TableCell>
-                  <TableCell>{rel.type}</TableCell>
-                  <TableCell>{rel.description}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.entity}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.type}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.description}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

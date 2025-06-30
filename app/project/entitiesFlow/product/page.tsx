@@ -17,59 +17,64 @@ import Link from 'next/link';
 
 export default function ProductPage() {
   const attributes = [
-    { name: 'id', type: 'string', description: 'Unique identifier for the product' },
-    { name: 'name', type: 'string', description: 'Product name' },
-    { name: 'description', type: 'string', description: 'Detailed product description' },
-    { name: 'category', type: 'string', description: 'Product category' },
-    { name: 'image', type: 'string', description: 'Product image URL or reference' },
-    { name: 'active', type: 'boolean', description: 'Whether the product is active' }
+    { name: 'id', type: 'string', description: 'Identificador único del producto' },
+    { name: 'name', type: 'string', description: 'Nombre del producto' },
+    { name: 'description', type: 'string', description: 'Descripción detallada del producto' },
+    { name: 'category', type: 'string', description: 'Categoría del producto' },
+    { name: 'image', type: 'string', description: 'URL o referencia de la imagen del producto' },
+    { name: 'active', type: 'boolean', description: 'Indica si el producto está activo' }
   ];
 
   const relationships = [
-    { entity: 'Image', type: '1:N', description: 'A product can have multiple images' },
-    { entity: 'CollectionCard', type: '1:N', description: 'A product can be in multiple collection cards' },
-    { entity: 'PurchaseMission', type: '1:N', description: 'A product can be target of multiple purchase missions' },
-    { entity: 'ProductRating', type: '1:N', description: 'A product can have multiple ratings' },
-    { entity: 'Reward', type: '1:N', description: 'A product can be a reward' }
+    { entity: 'Imagen', type: '1:N', description: 'Un producto puede tener múltiples imágenes' },
+    { entity: 'TarjetaColección', type: '1:N', description: 'Un producto puede estar en varias tarjetas de colección' },
+    { entity: 'MisiónCompra', type: '1:N', description: 'Un producto puede ser objetivo de varias misiones de compra' },
+    { entity: 'CalificaciónProducto', type: '1:N', description: 'Un producto puede tener múltiples calificaciones' },
+    { entity: 'Recompensa', type: '1:N', description: 'Un producto puede ser una recompensa' }
   ];
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ mb: 3 }}>
+      <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
+        <Link href="/project/entities" passHref>
+          <Button startIcon={<ArrowBack />} variant="outlined">
+            Volver a Entidades
+          </Button>
+        </Link>
         <Link href="/project/entitiesFlow" passHref>
           <Button startIcon={<ArrowBack />} variant="outlined">
-            Back to Diagram
+            Volver al Diagrama
           </Button>
         </Link>
       </Box>
 
       <Typography variant="h3" component="h1" gutterBottom>
-        Product
+        Producto
       </Typography>
 
       <Typography variant="body1" paragraph sx={{ mb: 4 }}>
-        Element used in missions, not necessarily sold.
+        Elemento usado en misiones, no necesariamente vendido.
       </Typography>
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Attributes
+          Atributos
         </Typography>
-        <TableContainer component={Paper}>
-          <Table>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid #e0e0e0' }}>
+          <Table sx={{ border: '1px solid #e0e0e0' }}>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Name</strong></TableCell>
-                <TableCell><strong>Type</strong></TableCell>
-                <TableCell><strong>Description</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Nombre</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Tipo</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Descripción</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {attributes.map((attr) => (
                 <TableRow key={attr.name}>
-                  <TableCell>{attr.name}</TableCell>
-                  <TableCell>{attr.type}</TableCell>
-                  <TableCell>{attr.description}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.name}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.type}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.description}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -79,23 +84,23 @@ export default function ProductPage() {
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" component="h2" gutterBottom>
-          Relationships
+          Relaciones
         </Typography>
-        <TableContainer component={Paper}>
-          <Table>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid #e0e0e0' }}>
+          <Table sx={{ border: '1px solid #e0e0e0' }}>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Entity</strong></TableCell>
-                <TableCell><strong>Type</strong></TableCell>
-                <TableCell><strong>Description</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Entidad</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Tipo</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Descripción</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {relationships.map((rel, index) => (
                 <TableRow key={index}>
-                  <TableCell>{rel.entity}</TableCell>
-                  <TableCell>{rel.type}</TableCell>
-                  <TableCell>{rel.description}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.entity}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.type}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.description}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

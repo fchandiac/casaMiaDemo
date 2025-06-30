@@ -31,7 +31,12 @@ export default function SegmentOptionsPage() {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ mb: 3 }}>
+      <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
+        <Link href="/project/entities" passHref>
+          <Button startIcon={<ArrowBack />} variant="outlined">
+            Volver a Entidades
+          </Button>
+        </Link>
         <Link href="/project/entitiesFlow" passHref>
           <Button startIcon={<ArrowBack />} variant="outlined">
             Volver al Diagrama
@@ -51,21 +56,21 @@ export default function SegmentOptionsPage() {
         <Typography variant="h5" component="h2" gutterBottom>
           Atributos
         </Typography>
-        <TableContainer component={Paper}>
-          <Table>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid #e0e0e0' }}>
+          <Table sx={{ border: '1px solid #e0e0e0' }}>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Nombre</strong></TableCell>
-                <TableCell><strong>Tipo</strong></TableCell>
-                <TableCell><strong>Descripción</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Nombre</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Tipo</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Descripción</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {attributes.map((attr) => (
                 <TableRow key={attr.name}>
-                  <TableCell>{attr.name}</TableCell>
-                  <TableCell>{attr.type}</TableCell>
-                  <TableCell>{attr.description}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.name}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.type}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{attr.description}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -77,21 +82,21 @@ export default function SegmentOptionsPage() {
         <Typography variant="h5" component="h2" gutterBottom>
           Relaciones
         </Typography>
-        <TableContainer component={Paper}>
-          <Table>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid #e0e0e0' }}>
+          <Table sx={{ border: '1px solid #e0e0e0' }}>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Entidad</strong></TableCell>
-                <TableCell><strong>Tipo</strong></TableCell>
-                <TableCell><strong>Descripción</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Entidad</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Tipo</strong></TableCell>
+                <TableCell sx={{ border: '1px solid #e0e0e0' }}><strong>Descripción</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {relationships.map((rel, index) => (
                 <TableRow key={index}>
-                  <TableCell>{rel.entity}</TableCell>
-                  <TableCell>{rel.type}</TableCell>
-                  <TableCell>{rel.description}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.entity}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.type}</TableCell>
+                  <TableCell sx={{ border: '1px solid #e0e0e0' }}>{rel.description}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
