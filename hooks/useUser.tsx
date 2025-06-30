@@ -2,32 +2,35 @@
 
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { User } from '@/types/user';
+import { User } from '@/types/users';
 
 // Mock implementation of getUserByEmail since we can't access the server actions
 const mockGetUserByEmail = async (email: string): Promise<User | null> => {
   // Mock data that matches the structure in app/actions/user.ts
   const users: User[] = [
     { 
-      id: 1, 
+      id: "1", 
       email: 'admin@example.com', 
       name: 'Admin User', 
-      role: 'admin',
-      status: 'activo'
+      active: true,
+      blocked: false,
+      roleId: 'admin'
     },
     { 
-      id: 2, 
+      id: "2", 
       email: 'user@example.com', 
       name: 'Regular User', 
-      role: 'user',
-      status: 'activo'
+      active: true,
+      blocked: false,
+      roleId: 'user'
     },
     { 
-      id: 3, 
+      id: "3", 
       email: 'operator@example.com', 
       name: 'Operator User', 
-      role: 'operator',
-      status: 'activo'
+      active: true,
+      blocked: false,
+      roleId: 'operator'
     }
   ];
 
@@ -48,8 +51,10 @@ export const useUser = () => {
         const basicUser: User = {
           email: session.user.email,
           name: session.user.name ?? '',
-          id: 0,
-          role: 'user'
+          id: "0",
+          active: true,
+          blocked: false,
+          roleId: 'user'
         };
 
         setUser(basicUser);

@@ -40,7 +40,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["next-auth", "@wdio/globals/types"],
+    "types": ["next-auth", "@wdio/globals/types", "mocha"],
     "plugins": [
       {
         "name": "next"

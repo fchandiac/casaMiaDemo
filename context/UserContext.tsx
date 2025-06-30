@@ -2,7 +2,7 @@
 
 import { createContext, useContext, ReactNode } from 'react';
 import { useUser as useUserHook } from '@/hooks/useUser';
-import { User } from '@/types/user';
+import { User } from '@/types/users';
 
 interface UserContextType {
   user: User | null;

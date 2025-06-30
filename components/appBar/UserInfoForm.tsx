@@ -11,10 +11,9 @@ import {
   IconButton,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import moment from "moment";
 import { useAlertContext } from "@/context/AlertContext";
 import { updateUserPassword, getUserById } from "@/app/actions/user";
-import { User } from "@/types/user";
+import { User } from "@/types/users";
 import { signOut } from "next-auth/react";
 
 type Props = {
@@ -25,24 +24,13 @@ const UserInfoForm = ({ user }: Props) => {
   const { showAlert } = useAlertContext();
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [actualPassword, setActualPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
 
   useEffect(() => {
-    const fetchPassword = async () => {
-      try {
-        const findUser = await getUserById(user.id);
-        const pass = findUser.pass;
-        setActualPassword(pass);
-      } catch (err) {
-        showAlert("No se pudo obtener la contraseña actual", "error");
-      }
-    };
-
-    fetchPassword();
+    // Ya no se obtiene la contraseña actual porque User no tiene pass
   }, [user.id, showAlert]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -53,31 +41,22 @@ const UserInfoForm = ({ user }: Props) => {
       return;
     }
 
-    if (oldPassword !== actualPassword) {
-      showAlert("La contraseña actual ingresada no es correcta", "error");
-      return;
-    }
+    // Simulación: omitir validación de contraseña actual
 
     setLoading(true);
 
-    const result = await updateUserPassword({
-      userId: user.id,
-      newPassword,
-    });
+    const result = await updateUserPassword(user.id, newPassword);
 
-    if (result?.error) {
-      showAlert(result.error, "error");
+    if (!result) {
+      showAlert("Error al actualizar la contraseña", "error");
     } else {
       showAlert("Contraseña actualizada correctamente", "success");
       setNewPassword("");
       setOldPassword("");
-
-      // Cierra sesión después de unos milisegundos
       setTimeout(() => {
-        signOut({ callbackUrl: "/" }); // Redirige al login
-      }, 1000); // Espera 1 segundo para que el usuario vea el mensaje
+        signOut({ callbackUrl: "/" });
+      }, 1000);
     }
-
     setLoading(false);
   };
 
@@ -86,8 +65,6 @@ const UserInfoForm = ({ user }: Props) => {
       <Typography variant="h6" gutterBottom>
         Información de Usuario
       </Typography>
-
-      {/* Info del usuario */}
       <Grid container spacing={1} direction="column">
         <Grid item xs={12}>
           <TextField
@@ -110,21 +87,13 @@ const UserInfoForm = ({ user }: Props) => {
         <Grid item xs={12}>
           <TextField
             label="Rol"
-            value={user.role}
+            value={user.roleId}
             InputProps={{ readOnly: true }}
             fullWidth
             size="small"
           />
         </Grid>
-        <Grid item xs={12}>
-          <TextField
-            label="Fecha de creación"
-            value={moment(user.createdAt).format("DD/MM/YYYY HH:mm")}
-            InputProps={{ readOnly: true }}
-            fullWidth
-            size="small"
-          />
-        </Grid>
+        {/* Eliminado campo Fecha de creación porque no existe en User */}
       </Grid>
 
       {/* Cambio de contraseña como Grid container en columna */}

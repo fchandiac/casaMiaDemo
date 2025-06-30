@@ -49,10 +49,10 @@ export default function Dashboard() {
                     <strong>ID:</strong> {user.id}
                   </Typography>
                   <Typography variant="body1">
-                    <strong>Rol:</strong> {user.role}
+                    <strong>Rol:</strong> {user.roleId}
                   </Typography>
                   <Typography variant="body1">
-                    <strong>Estado:</strong> {user.status || 'N/A'}
+                    <strong>Estado:</strong> {user.active ? 'Activo' : 'Inactivo'}
                   </Typography>
                 </Box>
               ) : (
