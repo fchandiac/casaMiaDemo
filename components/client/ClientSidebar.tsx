@@ -22,7 +22,8 @@ import {
   Person,
   Logout,
   Notifications,
-  CollectionsBookmark
+  CollectionsBookmark,
+  ReceiptLong
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 
@@ -44,37 +45,37 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
       text: 'Inicio', 
       icon: <Home />, 
       path: '/client',
-      color: '#1976d2'
+      color: '#212121'
     },
     { 
       text: 'Billetera', 
       icon: <AccountBalanceWallet />, 
       path: '/client/wallet',
-      color: '#1976d2'
+      color: '#212121'
     },
     { 
       text: 'Misiones', 
       icon: <Rocket />, 
       path: '/client/missions',
-      color: '#1976d2'
+      color: '#212121'
     },
     { 
       text: 'Recompensas', 
       icon: <EmojiEvents />, 
       path: '/client/rewards',
-      color: '#1976d2'
+      color: '#212121'
     },
     { 
       text: 'Insignias', 
       icon: <Star />, 
       path: '/client/badges',
-      color: '#1976d2'
+      color: '#212121'
     },
     { 
       text: 'Tarjetas de Colección', 
       icon: <CollectionsBookmark />, 
       path: '/client/collections',
-      color: '#1976d2'
+      color: '#212121'
     }
   ];
 
@@ -83,13 +84,13 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
       text: 'Escanear Menu', 
       icon: <QrCodeScanner />, 
       path: '/client/scan-qr',
-      color: '#1976d2'
+      color: '#212121'
     },
     { 
       text: 'Escanear Boleta', 
-      icon: <QrCodeScanner />, 
+      icon: <ReceiptLong />, 
       path: '/client/scan-receipt',
-      color: '#1976d2'
+      color: '#212121'
     }
   ];
 
@@ -98,13 +99,13 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
       text: 'Notificaciones', 
       icon: <Notifications />, 
       path: '/client/notifications',
-      color: '#1976d2'
+      color: '#212121'
     },
     { 
       text: 'Mi Perfil', 
       icon: <Person />, 
       path: '/client/profile',
-      color: '#1976d2'
+      color: '#212121'
     }
   ];
 
@@ -133,13 +134,13 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
         border: 'none'
       }}>
         {/* Header del Sidebar */}
-        <Box sx={{ p: 3, bgcolor: '#1976d2', color: 'white', border: 'none' }}>
+        <Box sx={{ p: 3, bgcolor: '#212121', color: 'white', border: 'none' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2, border: 'none' }}>
             <Avatar sx={{ 
               width: 50, 
               height: 50, 
               bgcolor: 'white', 
-              color: '#1976d2', 
+              color: '#212121', 
               boxShadow: 'none',
               border: 'none'
             }}>
@@ -302,12 +303,12 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
                   mb: 0.5,
                   border: '1px solid transparent',
                   '&:hover': { 
-                    bgcolor: 'rgba(25, 118, 210, 0.1)',
-                    border: '1px solid #1976d2'
+                    bgcolor: 'rgba(33, 33, 33, 0.1)',
+                    border: '1px solid #212121'
                   }
                 }}
               >
-                <ListItemIcon sx={{ color: '#1976d2', minWidth: 40 }}>
+                <ListItemIcon sx={{ color: '#212121', minWidth: 40 }}>
                   <Logout />
                 </ListItemIcon>
                 <ListItemText 

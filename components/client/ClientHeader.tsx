@@ -27,7 +27,7 @@ export default function ClientHeader() {
         position="fixed" 
         sx={{ 
           boxShadow: 'none', 
-          borderBottom: '3px solid #1976d2',
+          borderBottom: '3px solid #212121',
           top: 0,
           zIndex: 1100,
           padding: 0,

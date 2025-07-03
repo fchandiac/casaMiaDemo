@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Paper,
   BottomNavigation,
   BottomNavigationAction,
-  Box
+  Box,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  ListItemText
 } from '@mui/material';
 import {
   Home,
   AccountBalanceWallet,
   Rocket,
   CollectionsBookmark,
-  QrCodeScanner
+  QrCodeScanner,
+  ReceiptLong
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 
 export default function ClientBottomBar() {
   const router = useRouter();
   const [value, setValue] = React.useState(0);
+  const [scanMenuAnchor, setScanMenuAnchor] = useState<null | HTMLElement>(null);
+  const scanMenuOpen = Boolean(scanMenuAnchor);
 
   const handleNavigation = (path: string, newValue: number) => {
     setValue(newValue);
     router.push(path);
+  };
+
+  const handleScanClick = (event: React.MouseEvent<HTMLElement>) => {
+    setScanMenuAnchor(event.currentTarget);
+  };
+
+  const handleScanMenuClose = () => {
+    setScanMenuAnchor(null);
+  };
+
+  const handleScanOption = (path: string) => {
+    handleScanMenuClose();
+    router.push(path);
+    setValue(2); // Mantener el botón de escaneo seleccionado
   };
 
   return (
@@ -32,7 +53,7 @@ export default function ClientBottomBar() {
         right: 0, 
         zIndex: 1100,
         boxShadow: 'none',
-        borderTop: '3px solid #1976d2',
+        borderTop: '3px solid #212121',
         padding: 0,
         margin: 0
       }} 
@@ -49,7 +70,7 @@ export default function ClientBottomBar() {
           '& .MuiBottomNavigationAction-root': {
             color: '#666',
             '&.Mui-selected': {
-              color: '#1976d2'
+              color: '#212121'
             }
           }
         }}
@@ -67,7 +88,7 @@ export default function ClientBottomBar() {
         <BottomNavigationAction
           label="Escanear"
           icon={<QrCodeScanner />}
-          onClick={() => handleNavigation('/client/scan-qr', 2)}
+          onClick={handleScanClick}
         />
         <BottomNavigationAction
           label="Misiones"
@@ -80,6 +101,45 @@ export default function ClientBottomBar() {
           onClick={() => handleNavigation('/client/collections', 4)}
         />
       </BottomNavigation>
+
+      {/* Menú emergente para opciones de escaneo */}
+      <Menu
+        anchorEl={scanMenuAnchor}
+        open={scanMenuOpen}
+        onClose={handleScanMenuClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        PaperProps={{
+          elevation: 3,
+          sx: {
+            mt: -1,
+            width: 220,
+            borderRadius: 2,
+            '& .MuiMenuItem-root': {
+              py: 1.5
+            }
+          }
+        }}
+      >
+        <MenuItem onClick={() => handleScanOption('/client/scan-qr')}>
+          <ListItemIcon>
+            <QrCodeScanner fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="Escanear QR" secondary="Menús y productos" />
+        </MenuItem>
+        <MenuItem onClick={() => handleScanOption('/client/scan-receipt')}>
+          <ListItemIcon>
+            <ReceiptLong fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="Escanear Boleta" secondary="Códigos PDF417" />
+        </MenuItem>
+      </Menu>
     </Paper>
   );
 }
