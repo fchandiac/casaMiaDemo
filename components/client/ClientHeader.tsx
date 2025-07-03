@@ -27,6 +27,10 @@ export default function ClientHeader() {
     router.push('/client/notifications');
   };
 
+  const goToWallet = () => {
+    router.push('/client/wallet');
+  };
+
   return (
     <>
       <AppBar 
@@ -65,7 +69,23 @@ export default function ClientHeader() {
           </Typography>
 
           {/* Saldo rápido */}
-          <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              mr: 2, 
+              cursor: 'pointer',
+              padding: '6px 10px',
+              borderRadius: '20px',
+              transition: 'background-color 0.2s',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.1)'
+              }
+            }}
+            onClick={goToWallet}
+            aria-label="Ver billetera"
+            role="button"
+          >
             <AccountBalanceWallet sx={{ mr: 1, fontSize: 20 }} />
             <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
               $15.500
