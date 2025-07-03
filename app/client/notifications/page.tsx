@@ -261,50 +261,65 @@ export default function NotificationsPage() {
         }}
       >
         {/* Header con botón de regreso */}
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          <IconButton 
-            onClick={() => router.back()}
-            sx={{ mr: 2, border: '2px solid #ddd' }}
-          >
-            <ArrowBack />
-          </IconButton>
-          <Typography variant="h5" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <NotificationsIcon /> 
-            Notificaciones
-            {unreadCount > 0 && (
-              <Badge 
-                badgeContent={unreadCount} 
-                color="error" 
-                sx={{ ml: 1 }}
-              />
-            )}
-          </Typography>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'flex-start', sm: 'center' }, mb: 2, gap: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <IconButton 
+              onClick={() => router.back()}
+              sx={{ mr: 2, border: '2px solid #ddd' }}
+            >
+              <ArrowBack />
+            </IconButton>
+            <Typography variant="h5" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <NotificationsIcon /> 
+              Notificaciones
+              {unreadCount > 0 && (
+                <Badge 
+                  badgeContent={unreadCount} 
+                  color="error" 
+                  sx={{ ml: 1 }}
+                />
+              )}
+            </Typography>
+          </Box>
           
           {/* Acciones para todas las notificaciones */}
-          <Box sx={{ ml: 'auto', display: 'flex', gap: 1 }}>
-            {notifications.length > 0 && (
-              <>
-                <Button 
-                  startIcon={<MarkEmailRead />} 
-                  size="small" 
-                  variant="outlined"
-                  onClick={markAllAsRead}
-                  disabled={unreadCount === 0}
-                >
-                  Marcar todo como leído
-                </Button>
-                <Button 
-                  startIcon={<Delete />} 
-                  size="small" 
-                  variant="outlined" 
-                  color="error"
-                  onClick={deleteAllNotifications}
-                >
-                  Borrar todo
-                </Button>
-              </>
-            )}
-          </Box>
+          {notifications.length > 0 && (
+            <Box sx={{ 
+              display: 'flex', 
+              gap: 1, 
+              mt: { xs: 1, sm: 0 },
+              ml: { xs: 0, sm: 'auto' },
+              flexWrap: 'wrap',
+              width: { xs: '100%', sm: 'auto' }
+            }}>
+              <Button 
+                startIcon={<MarkEmailRead />} 
+                size="small" 
+                variant="outlined"
+                onClick={markAllAsRead}
+                disabled={unreadCount === 0}
+                sx={{ 
+                  flex: { xs: '1 1 auto', sm: '0 0 auto' },
+                  fontSize: { xs: '0.75rem', sm: '0.8125rem' }
+                }}
+              >
+                Marcar todo leído
+              </Button>
+              <Button 
+                startIcon={<Delete />} 
+                size="small" 
+                variant="outlined" 
+                color="error"
+                onClick={deleteAllNotifications}
+                sx={{ 
+                  flex: { xs: '1 1 auto', sm: '0 0 auto' },
+                  fontSize: { xs: '0.75rem', sm: '0.8125rem' }
+                }}
+              >
+                Borrar todo
+              </Button>
+            </Box>
+          )}
         </Box>
 
         {/* Pestañas para filtrar */}
@@ -315,6 +330,14 @@ export default function NotificationsPage() {
             variant="fullWidth"
             indicatorColor="primary"
             textColor="primary"
+            sx={{
+              minHeight: { xs: '42px', sm: '48px' },
+              '& .MuiTab-root': {
+                minHeight: { xs: '42px', sm: '48px' },
+                py: { xs: 0.5, sm: 1 },
+                fontSize: { xs: '0.75rem', sm: '0.875rem' }
+              }
+            }}
           >
             <Tab 
               label={
@@ -366,7 +389,7 @@ export default function NotificationsPage() {
                   <ListItem
                     sx={{ 
                       py: 2,
-                      px: 3,
+                      px: { xs: 2, sm: 3 },
                       bgcolor: notification.read ? 'transparent' : 'rgba(33, 33, 33, 0.04)', 
                       transition: 'background-color 0.3s',
                       '&:hover': {
@@ -377,6 +400,7 @@ export default function NotificationsPage() {
                       <IconButton 
                         edge="end" 
                         onClick={(e) => handleMenuOpen(e, notification.id)}
+                        size="small"
                       >
                         <MoreVert />
                       </IconButton>
@@ -389,8 +413,19 @@ export default function NotificationsPage() {
                     </ListItemAvatar>
                     <ListItemText
                       primary={
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <Typography variant="subtitle1" sx={{ fontWeight: notification.read ? 'normal' : 'bold' }}>
+                        <Box sx={{ 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          gap: 1,
+                          pr: { xs: 3, sm: 4 } // Espacio para el icono de menú
+                        }}>
+                          <Typography 
+                            variant="subtitle1" 
+                            sx={{ 
+                              fontWeight: notification.read ? 'normal' : 'bold',
+                              fontSize: { xs: '0.875rem', sm: '1rem' }
+                            }}
+                          >
                             {notification.title}
                           </Typography>
                           {!notification.read && (
@@ -399,17 +434,27 @@ export default function NotificationsPage() {
                               size="small" 
                               color="primary" 
                               variant="outlined" 
-                              sx={{ height: 20 }}
+                              sx={{ height: 20, display: { xs: 'none', sm: 'flex' } }}
                             />
                           )}
                         </Box>
                       }
                       secondary={
                         <>
-                          <Typography variant="body2" sx={{ mb: 0.5 }}>
+                          <Typography 
+                            variant="body2" 
+                            sx={{ 
+                              mb: 0.5,
+                              fontSize: { xs: '0.75rem', sm: '0.875rem' }
+                            }}
+                          >
                             {notification.message}
                           </Typography>
-                          <Typography variant="caption" color="text.secondary">
+                          <Typography 
+                            variant="caption" 
+                            color="text.secondary"
+                            sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}
+                          >
                             {formatDate(notification.sentDate)}
                           </Typography>
                         </>
@@ -431,6 +476,14 @@ export default function NotificationsPage() {
         anchorEl={menuAnchorEl}
         open={Boolean(menuAnchorEl)}
         onClose={handleMenuClose}
+        PaperProps={{
+          elevation: 3,
+          sx: {
+            minWidth: '180px',
+            borderRadius: '8px',
+            mt: 0.5
+          }
+        }}
       >
         {selectedNotification && (
           <>
@@ -445,11 +498,15 @@ export default function NotificationsPage() {
                 handleMenuClose();
               }}
               disabled={notifications.find(n => n.id === selectedNotification)?.read}
+              sx={{ py: 1.5 }}
             >
-              <ListItemIcon>
+              <ListItemIcon sx={{ minWidth: '36px' }}>
                 <Done fontSize="small" />
               </ListItemIcon>
-              <ListItemText primary="Marcar como leída" />
+              <ListItemText 
+                primary="Marcar como leída" 
+                primaryTypographyProps={{ variant: 'body2' }}
+              />
             </MenuItem>
             <MenuItem 
               onClick={() => {
@@ -458,11 +515,15 @@ export default function NotificationsPage() {
                 }
                 handleMenuClose();
               }}
+              sx={{ py: 1.5 }}
             >
-              <ListItemIcon>
+              <ListItemIcon sx={{ minWidth: '36px' }}>
                 <Delete fontSize="small" color="error" />
               </ListItemIcon>
-              <ListItemText primary="Eliminar" />
+              <ListItemText 
+                primary="Eliminar" 
+                primaryTypographyProps={{ variant: 'body2' }}
+              />
             </MenuItem>
           </>
         )}
@@ -474,8 +535,24 @@ export default function NotificationsPage() {
         autoHideDuration={4000}
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        sx={{
+          bottom: { xs: '70px', sm: '80px' }, // Ajustar para no tapar el bottom bar
+          '& .MuiAlert-root': {
+            width: { xs: '90%', sm: 'auto' },
+            maxWidth: '100%',
+            mx: 'auto'
+          }
+        }}
       >
-        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity}>
+        <Alert 
+          onClose={handleCloseSnackbar} 
+          severity={snackbar.severity}
+          variant="filled"
+          sx={{ 
+            py: { xs: 0.5, sm: 1 },
+            fontSize: { xs: '0.75rem', sm: '0.875rem' }
+          }}
+        >
           {snackbar.message}
         </Alert>
       </Snackbar>
