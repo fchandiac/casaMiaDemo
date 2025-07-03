@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   AppBar,
   Toolbar,
@@ -15,10 +16,15 @@ import {
 import ClientSidebar from './ClientSidebar';
 
 export default function ClientHeader() {
+  const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
+  };
+
+  const goToNotifications = () => {
+    router.push('/client/notifications');
   };
 
   return (
@@ -67,7 +73,11 @@ export default function ClientHeader() {
           </Box>
 
           {/* Notificaciones */}
-          <IconButton color="inherit">
+          <IconButton 
+            color="inherit"
+            onClick={goToNotifications}
+            aria-label="Ver notificaciones"
+          >
             <Badge badgeContent={3} color="error">
               <Notifications />
             </Badge>
