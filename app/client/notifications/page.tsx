@@ -39,7 +39,9 @@ import {
   Event,
   Campaign,
   MarkEmailRead,
-  ErrorOutline
+  ErrorOutline,
+  Cake as CakeIcon,
+  Restaurant as RestaurantIcon
 } from '@mui/icons-material';
 import { ClientHeader, ClientBottomBar } from '@/components/client';
 import { Notification } from '@/types/users';
@@ -86,8 +88,10 @@ const getNotificationIcon = (type: string) => {
       return <Info sx={{ color: '#1976D2' }} />;
     case 'event':
       return <Event sx={{ color: '#388E3C' }} />;
-    case 'announcement':
-      return <Campaign sx={{ color: '#0097A7' }} />;
+    case 'birthday':
+      return <CakeIcon sx={{ color: '#E91E63' }} />;
+    case 'featured':
+      return <RestaurantIcon sx={{ color: '#FF5722' }} />;
     default:
       return <NotificationsIcon sx={{ color: '#616161' }} />;
   }
@@ -98,64 +102,37 @@ const mockNotifications: Notification[] = [
   {
     id: '1',
     userId: 'user-123',
-    type: 'reward',
-    title: '¡Nueva recompensa disponible!',
-    message: 'Has desbloqueado un café gratis por tu fidelidad. Canjéalo en tu próxima visita.',
-    sentDate: new Date(2025, 6, 3, 9, 15), // Hoy
+    type: 'birthday',
+    title: '¡Feliz Cumpleaños!',
+    message: 'Te deseamos un excelente día. Tenemos un regalo especial para ti en tu próxima visita.',
+    sentDate: new Date(2025, 6, 3, 8, 0), // Hoy
     read: false
   },
   {
     id: '2',
     userId: 'user-123',
-    type: 'badge',
-    title: 'Insignia desbloqueada',
-    message: 'Has obtenido la insignia "Amante del Café" por tus compras frecuentes.',
-    sentDate: new Date(2025, 6, 2, 14, 30), // Ayer
-    read: true
+    type: 'featured',
+    title: 'Producto Destacado',
+    message: 'Prueba nuestro nuevo Croissant de Chocolate Belga, elaborado con ingredientes premium.',
+    sentDate: new Date(2025, 6, 2, 10, 15), // Ayer
+    read: false
   },
   {
     id: '3',
     userId: 'user-123',
     type: 'promo',
-    title: 'Promoción especial',
-    message: '¡30% de descuento en pasteles este fin de semana! Válido solo en tiendas participantes.',
-    sentDate: new Date(2025, 6, 1, 10, 0), // Hace 2 días
-    read: false
+    title: 'Oferta Especial',
+    message: '2x1 en todos nuestros cafés después de las 17h. ¡Válido solo hoy!',
+    sentDate: new Date(2025, 6, 1, 9, 30), // Hace 2 días
+    read: true
   },
   {
     id: '4',
     userId: 'user-123',
-    type: 'info',
-    title: 'Actualización de política de privacidad',
-    message: 'Hemos actualizado nuestra política de privacidad. Revisa los cambios en nuestra web.',
-    sentDate: new Date(2025, 5, 28, 9, 0), // Hace una semana
-    read: true
-  },
-  {
-    id: '5',
-    userId: 'user-123',
-    type: 'event',
-    title: 'Evento exclusivo',
-    message: 'Te invitamos a la degustación de nuestros nuevos cafés especiales el próximo sábado.',
-    sentDate: new Date(2025, 5, 25, 16, 45), // Hace una semana y media
-    read: false
-  },
-  {
-    id: '6',
-    userId: 'user-123',
-    type: 'announcement',
-    title: 'Nuevos productos',
-    message: 'Descubre nuestra nueva línea de tés orgánicos, disponible a partir de mañana.',
-    sentDate: new Date(2025, 5, 20, 11, 20), // Hace dos semanas
-    read: true
-  },
-  {
-    id: '7',
-    userId: 'user-123',
     type: 'reward',
-    title: 'Puntos acumulados',
-    message: '¡Has acumulado 500 puntos! Puedes canjearlos por diferentes recompensas.',
-    sentDate: new Date(2025, 5, 15, 13, 10), // Hace dos semanas y media
+    title: 'Puntos Acumulados',
+    message: 'Has alcanzado 200 puntos en tu cuenta. ¡Sigue acumulando para más beneficios!',
+    sentDate: new Date(2025, 5, 25, 14, 45), // Hace una semana
     read: true
   }
 ];
@@ -188,10 +165,10 @@ export default function NotificationsPage() {
 
   // Filtrar notificaciones según la pestaña seleccionada
   const filteredNotifications = tabValue === 0 
-    ? notifications 
+    ? notifications.filter(n => !n.read)
     : tabValue === 1 
-      ? notifications.filter(n => !n.read) 
-      : notifications.filter(n => n.read);
+      ? notifications.filter(n => n.read) 
+      : notifications;
 
   // Contar notificaciones no leídas
   const unreadCount = notifications.filter(n => !n.read).length;
@@ -339,7 +316,6 @@ export default function NotificationsPage() {
             indicatorColor="primary"
             textColor="primary"
           >
-            <Tab label="Todas" />
             <Tab 
               label={
                 <Badge 
@@ -352,6 +328,7 @@ export default function NotificationsPage() {
               } 
             />
             <Tab label="Leídas" />
+            <Tab label="Todas" />
           </Tabs>
         </Paper>
 
@@ -376,10 +353,10 @@ export default function NotificationsPage() {
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {tabValue === 0 
-                  ? 'Aún no tienes notificaciones' 
+                  ? 'No tienes notificaciones sin leer' 
                   : tabValue === 1 
-                    ? 'No tienes notificaciones sin leer' 
-                    : 'No tienes notificaciones leídas'}
+                    ? 'No tienes notificaciones leídas'
+                    : 'Aún no tienes notificaciones'}
               </Typography>
             </Box>
           ) : (
