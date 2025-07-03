@@ -108,23 +108,10 @@ export default function ProfilePage() {
         answer: ''
       },
       {
-        id: 'sq-2',
-        question: '¿Qué tipo de productos consumes más frecuentemente?',
-        type: 'checkbox',
-        options: ['Café', 'Té', 'Pasteles', 'Sándwiches', 'Ensaladas', 'Jugos'],
-        answer: []
-      },
-      {
         id: 'sq-3',
         question: '¿Sueles trabajar o estudiar en nuestras tiendas?',
         type: 'radio',
         options: ['Sí, frecuentemente', 'A veces', 'Raramente', 'Nunca'],
-        answer: ''
-      },
-      {
-        id: 'sq-4',
-        question: '¿Qué podríamos mejorar en nuestros productos o servicio?',
-        type: 'text',
         answer: ''
       }
     ]
@@ -393,9 +380,20 @@ export default function ProfilePage() {
           <Typography variant="h6" sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
             <Person /> Cuéntanos sobre ti
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
             Tus respuestas nos ayudarán a personalizar mejor tu experiencia y ofrecerte recomendaciones más acertadas.
           </Typography>
+          
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+            <Button 
+              variant="contained" 
+              color="primary"
+              onClick={() => router.push('/client/profile/segmentation')}
+              sx={{ px: 4, py: 1.5, borderRadius: 2 }}
+            >
+              Responder Cuestionario Completo
+            </Button>
+          </Box>
           
           <Grid container spacing={3}>
             {profile.segmentQuestions.map((question) => (
@@ -487,18 +485,28 @@ export default function ProfilePage() {
               </Grid>
             ))}
             
-            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <Button 
-                variant="contained" 
-                color="primary"
-                sx={{ mt: 2 }}
-                onClick={() => {
-                  // Aquí iría la lógica para guardar las respuestas
-                  alert('¡Gracias por compartir tu información!');
-                }}
-              >
-                Guardar Respuestas
-              </Button>
+            <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 2, textAlign: 'center' }}>
+                Estas son solo algunas preguntas clave. Para un perfil más completo, accede al cuestionario completo.
+              </Typography>
+              <Box sx={{ display: 'flex', gap: 2 }}>
+                <Button 
+                  variant="outlined" 
+                  color="primary"
+                  onClick={() => {
+                    alert('¡Gracias por compartir tu información!');
+                  }}
+                >
+                  Guardar Respuestas
+                </Button>
+                <Button 
+                  variant="contained" 
+                  color="primary"
+                  onClick={() => router.push('/client/profile/segmentation')}
+                >
+                  Ver Cuestionario Completo
+                </Button>
+              </Box>
             </Grid>
           </Grid>
         </Paper>
