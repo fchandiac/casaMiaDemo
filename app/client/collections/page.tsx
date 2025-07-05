@@ -11,12 +11,12 @@ import {
   Chip
 } from '@mui/material';
 import { 
-  ArrowBack,
-  CollectionsBookmark
+  ArrowBack
 } from '@mui/icons-material';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ClientHeader, ClientBottomBar, CollectionCard } from '@/components/client';
+import { SimpleCollectionCardIcon } from '@/components/icons';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -107,7 +107,7 @@ export default function CollectionsPage() {
             <ArrowBack />
           </IconButton>
           <Typography variant="h5" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <CollectionsBookmark /> Tarjetas de Colección
+            <SimpleCollectionCardIcon /> Tarjetas de Colección
           </Typography>
         </Box>
 

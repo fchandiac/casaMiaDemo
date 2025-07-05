@@ -22,9 +22,9 @@ import {
   Person,
   Logout,
   Notifications,
-  CollectionsBookmark,
   ReceiptLong
 } from '@mui/icons-material';
+import { SimpleCollectionCardIcon } from '@/components/icons';
 import { useRouter } from 'next/navigation';
 
 interface ClientSidebarProps {
@@ -73,7 +73,7 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
     },
     { 
       text: 'Tarjetas de Colección', 
-      icon: <CollectionsBookmark />, 
+      icon: <SimpleCollectionCardIcon />, 
       path: '/client/collections',
       color: '#212121'
     }

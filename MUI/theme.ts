@@ -23,6 +23,22 @@ const theme = createTheme({
         },
       },
     },
+    // Configuración global del componente Paper
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: 0, // Eliminando bordes redondeados para todos los Papers
+        },
+      },
+    },
+    // Configuración global del componente BottomNavigation
+    MuiBottomNavigation: {
+      styleOverrides: {
+        root: {
+          borderRadius: 0, // Eliminando bordes redondeados
+        },
+      },
+    },
   },
   mixins: {
     toolbar: {

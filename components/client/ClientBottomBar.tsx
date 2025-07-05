@@ -13,10 +13,10 @@ import {
   Home,
   AccountBalanceWallet,
   Rocket,
-  CollectionsBookmark,
   QrCodeScanner,
   ReceiptLong
 } from '@mui/icons-material';
+import { SimpleCollectionCardIcon } from '@/components/icons';
 import { useRouter } from 'next/navigation';
 
 export default function ClientBottomBar() {
@@ -55,7 +55,8 @@ export default function ClientBottomBar() {
         boxShadow: 'none',
         borderTop: '3px solid #212121',
         padding: 0,
-        margin: 0
+        margin: 0,
+        borderRadius: 0 // Eliminando cualquier redondeo de bordes
       }} 
       elevation={0}
     >
@@ -68,6 +69,7 @@ export default function ClientBottomBar() {
           maxHeight: 70,
           padding: 0,
           bgcolor: '#212121', // Color primario como fondo
+          borderRadius: 0, // Eliminando cualquier redondeo de bordes
           '& .MuiBottomNavigationAction-root': {
             color: 'rgba(255, 255, 255, 0.6)', // Color de iconos no seleccionados con mejor contraste
             '&.Mui-selected': {
@@ -98,7 +100,7 @@ export default function ClientBottomBar() {
         />
         <BottomNavigationAction
           label="Colecciones"
-          icon={<CollectionsBookmark />}
+          icon={<SimpleCollectionCardIcon />}
           onClick={() => handleNavigation('/client/collections', 4)}
         />
       </BottomNavigation>
@@ -121,7 +123,7 @@ export default function ClientBottomBar() {
           sx: {
             mt: -1,
             width: 220,
-            borderRadius: 2,
+            borderRadius: 0, // Eliminando los bordes redondeados
             '& .MuiMenuItem-root': {
               py: 1.5
             }

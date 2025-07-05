@@ -6,6 +6,7 @@ import {
   Typography,
   Avatar
 } from '@mui/material';
+import { SimpleCollectionCardIcon } from '@/components/icons';
 
 interface CollectionCardProps {
   productName: string;
@@ -42,9 +43,7 @@ export default function CollectionCard({
               border: '1px solid #ddd'
             }}
           >
-            <Typography variant="h4" sx={{ color: '#8B4513' }}>
-              ☕
-            </Typography>
+            <SimpleCollectionCardIcon style={{ fontSize: 40, color: '#212121' }} />
           </Box>
 
           {/* Contenido principal */}

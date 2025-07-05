@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>collection-card-icon</title>
+    <g id="collection-card-icon" stroke="none" fill="none" fill-rule="evenodd" stroke-width="1">
+        <g id="Tarjeta-de-Colección">
+            <path d="M21,2 L3,2 C1.9,2 1,2.9 1,4 L1,20 C1,21.1 1.9,22 3,22 L21,22 C22.1,22 23,21.1 23,20 L23,4 C23,2.9 22.1,2 21,2 Z M21,20 L3,20 L3,4 L21,4 L21,20 Z" id="card-outline" fill="#212121" fill-rule="nonzero"></path>
+            <circle id="progress-circle-1" fill="#212121" fill-rule="nonzero" cx="11" cy="16" r="1.5"></circle>
+            <circle id="progress-circle-2" fill="#212121" fill-rule="nonzero" cx="6" cy="16" r="1.5"></circle>
+            <circle id="progress-circle-empty-1" stroke="#212121" cx="6" cy="16" r="1.5"></circle>
+            <circle id="progress-circle-empty-2" stroke="#212121" cx="11" cy="16" r="1.5"></circle>
+            <circle id="progress-circle-empty-2" stroke="#212121" cx="16" cy="16" r="1.5"></circle>
+        </g>
+    </g>
+</svg>
