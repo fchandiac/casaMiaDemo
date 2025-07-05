@@ -67,10 +67,11 @@ export default function ClientBottomBar() {
           minHeight: 70,
           maxHeight: 70,
           padding: 0,
+          bgcolor: '#212121', // Color primario como fondo
           '& .MuiBottomNavigationAction-root': {
-            color: '#666',
+            color: 'rgba(255, 255, 255, 0.6)', // Color de iconos no seleccionados con mejor contraste
             '&.Mui-selected': {
-              color: '#212121'
+              color: 'white' // Color de iconos seleccionados
             }
           }
         }}
