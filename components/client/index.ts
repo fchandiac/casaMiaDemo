@@ -5,3 +5,5 @@ export { default as BadgeCard } from './BadgeCard';
 export { default as CollectionCard } from './CollectionCard';
 export { default as MissionCard } from './MissionCard';
 export { default as QRValidationDialog } from './QRValidationDialog';
+export { default as WalletKeypadDialog } from './WalletKeypadDialog';
+export { default as WalletQRDialog } from './WalletQRDialog';

@@ -17,10 +17,33 @@ import {
   ArrowBack
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
-import { ClientHeader, ClientBottomBar } from '@/components/client';
+import { useState } from 'react';
+import { ClientHeader, ClientBottomBar, WalletKeypadDialog, WalletQRDialog } from '@/components/client';
 
 export default function WalletPage() {
   const router = useRouter();
+  const [keypadOpen, setKeypadOpen] = useState(false);
+  const [qrDialogOpen, setQrDialogOpen] = useState(false);
+  const [selectedAmount, setSelectedAmount] = useState(0);
+  const availableBalance = 15500; // En un caso real, esto vendría de una API o contexto
+
+  const handleUseBalance = () => {
+    setKeypadOpen(true);
+  };
+
+  const handleKeypadClose = () => {
+    setKeypadOpen(false);
+  };
+
+  const handleQRDialogClose = () => {
+    setQrDialogOpen(false);
+  };
+
+  const handleAmountConfirm = (amount: number) => {
+    setSelectedAmount(amount);
+    setKeypadOpen(false);
+    setQrDialogOpen(true);
+  };
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: '#f5f5f5' }}>
@@ -50,17 +73,26 @@ export default function WalletPage() {
         {/* Resumen de Saldo */}
         <Paper sx={{ p: 3, mb: 3, border: '2px solid #ddd', boxShadow: 'none', textAlign: 'center' }}>
           <Typography variant="h3" color="#4caf50" sx={{ mb: 1, fontWeight: 'bold' }}>
-            $15.500
+            ${availableBalance.toLocaleString()}
           </Typography>
           <Typography variant="h6" sx={{ mb: 3, color: 'text.secondary' }}>
             Saldo Disponible
           </Typography>
           
           <Button 
-            variant="outlined" 
+            variant="contained" 
             fullWidth 
             startIcon={<Remove />}
-            sx={{ py: 1.5 }}
+            onClick={handleUseBalance}
+            sx={{ 
+              py: 1.8,
+              borderRadius: 2,
+              fontWeight: 'bold',
+              bgcolor: '#4caf50',
+              '&:hover': {
+                bgcolor: '#388e3c',
+              }
+            }}
           >
             Usar Saldo
           </Button>
@@ -152,6 +184,21 @@ export default function WalletPage() {
       </Container>
       
       <ClientBottomBar />
+
+      {/* Diálogo de teclado numérico para ingresar el monto */}
+      <WalletKeypadDialog
+        open={keypadOpen}
+        onClose={handleKeypadClose}
+        availableBalance={availableBalance}
+        onConfirm={handleAmountConfirm}
+      />
+
+      {/* Diálogo de QR para validación del pago */}
+      <WalletQRDialog
+        open={qrDialogOpen}
+        onClose={handleQRDialogClose}
+        amount={selectedAmount}
+      />
     </Box>
   );
 }
