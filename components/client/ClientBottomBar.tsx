@@ -74,6 +74,10 @@ export default function ClientBottomBar() {
             color: 'rgba(255, 255, 255, 0.6)', // Color de iconos no seleccionados con mejor contraste
             '&.Mui-selected': {
               color: 'white' // Color de iconos seleccionados
+            },
+            '& .MuiBottomNavigationAction-label': {
+              fontSize: '0.7rem',
+              marginTop: '4px'
             }
           }
         }}
@@ -100,7 +104,7 @@ export default function ClientBottomBar() {
         />
         <BottomNavigationAction
           label="Colecciones"
-          icon={<SimpleCollectionCardIcon />}
+          icon={<SimpleCollectionCardIcon size={24} />}
           onClick={() => handleNavigation('/client/collections', 4)}
         />
       </BottomNavigation>

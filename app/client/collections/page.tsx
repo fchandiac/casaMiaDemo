@@ -15,8 +15,8 @@ import {
 } from '@mui/icons-material';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ClientHeader, ClientBottomBar, CollectionCard } from '@/components/client';
 import { SimpleCollectionCardIcon } from '@/components/icons';
+import { ClientHeader, ClientBottomBar, CollectionCard } from '@/components/client';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -107,7 +107,7 @@ export default function CollectionsPage() {
             <ArrowBack />
           </IconButton>
           <Typography variant="h5" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <SimpleCollectionCardIcon /> Tarjetas de Colección
+            <SimpleCollectionCardIcon size={28} /> Tarjetas de Colección
           </Typography>
         </Box>
 

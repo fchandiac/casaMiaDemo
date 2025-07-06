@@ -73,7 +73,7 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
     },
     { 
       text: 'Tarjetas de Colección', 
-      icon: <SimpleCollectionCardIcon />, 
+      icon: <SimpleCollectionCardIcon size={24} />, 
       path: '/client/collections',
       color: '#212121'
     }

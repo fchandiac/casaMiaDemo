@@ -30,21 +30,20 @@ export default function CollectionCard({
     >
       <CardContent sx={{ p: 2 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          {/* Imagen/Icono del producto (placeholder) */}
-          <Box
-            sx={{
-              width: 60,
-              height: 60,
-              bgcolor: '#f5f5f5',
-              borderRadius: 1,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid #ddd'
-            }}
-          >
-            <SimpleCollectionCardIcon style={{ fontSize: 40, color: '#212121' }} />
-          </Box>
+          {/* Imagen/Icono del producto (placeholder) */}            <Box
+              sx={{
+                width: 60,
+                height: 60,
+                bgcolor: '#f5f5f5',
+                borderRadius: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: '1px solid #ddd'
+              }}
+            >
+              <SimpleCollectionCardIcon size={40} />
+            </Box>
 
           {/* Contenido principal */}
           <Box sx={{ flex: 1 }}>
