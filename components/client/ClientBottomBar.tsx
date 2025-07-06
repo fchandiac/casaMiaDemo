@@ -126,10 +126,10 @@ export default function ClientBottomBar() {
           elevation: 3,
           sx: {
             mt: -1,
-            width: 220,
+            width: 180,
             borderRadius: 0, // Eliminando los bordes redondeados
             '& .MuiMenuItem-root': {
-              py: 1.5
+              py: 1.2
             }
           }
         }}
@@ -138,13 +138,13 @@ export default function ClientBottomBar() {
           <ListItemIcon>
             <QrCodeScanner fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Escanear QR" secondary="Menús y productos" />
+          <ListItemText primary="Escanear Menú" />
         </MenuItem>
         <MenuItem onClick={() => handleScanOption('/client/scan-receipt')}>
           <ListItemIcon>
             <ReceiptLong fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Escanear Boleta" secondary="Códigos PDF417" />
+          <ListItemText primary="Escanear Boleta" />
         </MenuItem>
       </Menu>
     </Paper>
