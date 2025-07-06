@@ -48,21 +48,15 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
       color: '#212121'
     },
     { 
-      text: 'Billetera', 
-      icon: <AccountBalanceWallet />, 
-      path: '/client/wallet',
-      color: '#212121'
-    },
-    { 
       text: 'Misiones', 
       icon: <Rocket />, 
       path: '/client/missions',
       color: '#212121'
     },
     { 
-      text: 'Recompensas', 
-      icon: <EmojiEvents />, 
-      path: '/client/rewards',
+      text: 'Tarjetas de Colección', 
+      icon: <SimpleCollectionCardIcon size={24} />, 
+      path: '/client/collections',
       color: '#212121'
     },
     { 
@@ -72,9 +66,15 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
       color: '#212121'
     },
     { 
-      text: 'Tarjetas de Colección', 
-      icon: <SimpleCollectionCardIcon size={24} />, 
-      path: '/client/collections',
+      text: 'Billetera', 
+      icon: <AccountBalanceWallet />, 
+      path: '/client/wallet',
+      color: '#212121'
+    },
+    { 
+      text: 'Recompensas', 
+      icon: <EmojiEvents />, 
+      path: '/client/rewards',
       color: '#212121'
     }
   ];
