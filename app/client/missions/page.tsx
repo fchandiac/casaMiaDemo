@@ -16,6 +16,8 @@ import {
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ClientHeader, ClientBottomBar, MissionCard } from '@/components/client';
+import { MissionDialog, simpleMissionToFull } from '@/components/missions';
+import { Mission } from '@/types/mission';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -46,32 +48,79 @@ function TabPanel(props: TabPanelProps) {
 export default function MissionsPage() {
   const router = useRouter();
   const [tabValue, setTabValue] = useState(0);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
   };
 
-  const handleCompleteMission = (missionTitle: string) => {
-    alert(`¡Misión "${missionTitle}" completada!`);
-    // Aquí iría la lógica para completar la misión
+  const handleCompleteMission = (missionId: string) => {
+    // Aquí iría la lógica para registrar la misión como completada
+    alert(`¡Misión "${missionId}" completada!`);
+    
+    // Actualizamos la UI (esto sería reemplazado por una llamada a la API real)
+    const updatedAvailableMissions = availableMissions.filter(m => m.id !== missionId);
+    // En un caso real, también añadiríamos la misión a completedMissions
+  };
+  
+  const handleOpenMissionDialog = (missionId: string) => {
+    // Encontrar la misión seleccionada
+    const mission = availableMissions.find(m => m.id === missionId);
+    
+    if (mission) {
+      // Convertir el formato simplificado a un objeto Mission completo
+      const missionData = simpleMissionToFull(mission);
+      
+      setSelectedMission(missionData);
+      setDialogOpen(true);
+    }
   };
 
   // Datos de ejemplo para las misiones
   const availableMissions = [
     {
+      id: "mission1",
       title: "Visita Matutina",
       description: "Llega a CasaMia antes de las 9:00 AM",
       reward: "$2.000",
-      imageEmoji: "🌅"
+      imageEmoji: "🌅",
+      type: "location"
+    },
+    {
+      id: "mission2",
+      title: "Encuesta de Satisfacción",
+      description: "Dinos qué te parece nuestra nueva sección de panadería",
+      reward: "$1.500",
+      imageEmoji: "📝",
+      type: "survey"
+    },
+    {
+      id: "mission3",
+      title: "Trivia de Café",
+      description: "Demuestra cuánto sabes sobre nuestras variedades de café",
+      reward: "$3.000",
+      imageEmoji: "☕",
+      type: "trivia"
     }
   ];
 
   const completedMissions = [
     {
+      id: "completedMission1",
       title: "Primera Visita",
       description: "Visitaste CasaMia por primera vez",
       reward: "$2.500",
-      imageEmoji: "🏪"
+      imageEmoji: "🏪",
+      type: "location"
+    },
+    {
+      id: "completedMission2",
+      title: "Escanea el QR Secreto",
+      description: "Encontraste y escaneaste el código QR oculto",
+      reward: "$1.000",
+      imageEmoji: "🔍",
+      type: "qrcode"
     }
   ];
 
@@ -161,7 +210,7 @@ export default function MissionsPage() {
                 reward={mission.reward}
                 imageEmoji={mission.imageEmoji}
                 isCompleted={false}
-                onComplete={() => handleCompleteMission(mission.title)}
+                onComplete={() => handleOpenMissionDialog(mission.id)}
               />
             ))}
           </Box>
@@ -185,6 +234,14 @@ export default function MissionsPage() {
       </Container>
       
       <ClientBottomBar />
+      
+      {/* Diálogo de Misión */}
+      <MissionDialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        mission={selectedMission}
+        onComplete={handleCompleteMission}
+      />
     </Box>
   );
 }

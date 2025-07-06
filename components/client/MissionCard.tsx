@@ -16,6 +16,7 @@ interface MissionCardProps {
   isCompleted?: boolean;
   progress?: number;
   onComplete?: () => void;
+  onClick?: () => void;
 }
 
 export default function MissionCard({ 
@@ -25,7 +26,8 @@ export default function MissionCard({
   imageEmoji = "🎯",
   isCompleted = false,
   progress = 0,
-  onComplete
+  onComplete,
+  onClick
 }: MissionCardProps) {
   return (
     <Card 
@@ -34,8 +36,14 @@ export default function MissionCard({
         boxShadow: 'none',
         borderRadius: 2,
         overflow: 'hidden',
-        opacity: isCompleted ? 0.7 : 1
+        opacity: isCompleted ? 0.7 : 1,
+        cursor: onClick ? 'pointer' : 'default',
+        '&:hover': onClick ? {
+          boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+          borderColor: '#bbb'
+        } : {}
       }}
+      onClick={onClick}
     >
       <CardContent sx={{ p: 2 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -125,7 +133,10 @@ export default function MissionCard({
                 <Button 
                   variant="contained" 
                   size="small"
-                  onClick={onComplete}
+                  onClick={(e) => {
+                    e.stopPropagation(); // Evitar que se propague si hay onClick en la card
+                    onComplete();
+                  }}
                   sx={{ 
                     minWidth: 'auto',
                     px: 2,
@@ -133,7 +144,7 @@ export default function MissionCard({
                     fontSize: '0.75rem'
                   }}
                 >
-                  Completar
+                  Iniciar Misión
                 </Button>
               )}
               

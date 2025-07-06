@@ -1,0 +1,63 @@
+/* Estilos para el diálogo de misiones */
+
+/* Ocultar el encabezado de la misión en el componente */
+.mission-dialog-content .MuiCard-root > .MuiCardContent-root > .MuiBox-root:first-of-type {
+  display: none !important;
+}
+
+/* Estilos adicionales para la tarjeta de misión dentro del diálogo */
+.mission-dialog-content .MuiCard-root {
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Estilos generales para el contenido de la misión */
+.mission-dialog-content .MuiCardContent-root {
+  padding: 24px !important;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 600px) {
+  /* Ajustar el padding del contenido en móviles */
+  .mission-dialog-content .MuiCardContent-root {
+    padding: 16px !important;
+  }
+  
+  /* Ajustar padding para elementos internos */
+  .mission-dialog-content .MuiCard-root > .MuiCardContent-root > .MuiBox-root {
+    padding: 16px !important;
+  }
+  
+  /* Reducir márgenes en elementos internos */
+  .mission-dialog-content .MuiPaper-root {
+    margin-bottom: 12px !important;
+  }
+  
+  /* Ajustar tamaño de fuente en móviles */
+  .mission-dialog-content .MuiTypography-h6 {
+    font-size: 1.1rem !important;
+  }
+  
+  .mission-dialog-content .MuiTypography-body2 {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Ajustar botones en móviles */
+  .mission-dialog-content button.MuiButton-root {
+    padding: 8px 16px !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Estilos específicos para garantizar que el diálogo no ocupe toda la pantalla */
+.MuiDialog-paper {
+  margin: 24px !important;
+}
+
+@media (max-width: 600px) {
+  .MuiDialog-paper {
+    margin: 16px !important;
+  }
+}
