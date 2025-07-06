@@ -21,7 +21,7 @@ import { useRouter } from 'next/navigation';
 
 export default function ClientBottomBar() {
   const router = useRouter();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(2); // Por defecto, seleccionamos el botón de inicio (ahora en posición 2)
   const [scanMenuAnchor, setScanMenuAnchor] = useState<null | HTMLElement>(null);
   const scanMenuOpen = Boolean(scanMenuAnchor);
 
@@ -41,7 +41,7 @@ export default function ClientBottomBar() {
   const handleScanOption = (path: string) => {
     handleScanMenuClose();
     router.push(path);
-    setValue(2); // Mantener el botón de escaneo seleccionado
+    setValue(3); // Mantener el botón de escaneo seleccionado (ahora es el índice 3)
   };
 
   return (
@@ -83,24 +83,24 @@ export default function ClientBottomBar() {
         }}
       >
         <BottomNavigationAction
-          label="Inicio"
-          icon={<Home />}
-          onClick={() => handleNavigation('/client', 0)}
-        />
-        <BottomNavigationAction
           label="Billetera"
           icon={<AccountBalanceWallet />}
-          onClick={() => handleNavigation('/client/wallet', 1)}
+          onClick={() => handleNavigation('/client/wallet', 0)}
+        />
+        <BottomNavigationAction
+          label="Misiones"
+          icon={<Rocket />}
+          onClick={() => handleNavigation('/client/missions', 1)}
+        />
+        <BottomNavigationAction
+          label="Inicio"
+          icon={<Home />}
+          onClick={() => handleNavigation('/client', 2)}
         />
         <BottomNavigationAction
           label="Escanear"
           icon={<QrCodeScanner />}
           onClick={handleScanClick}
-        />
-        <BottomNavigationAction
-          label="Misiones"
-          icon={<Rocket />}
-          onClick={() => handleNavigation('/client/missions', 3)}
         />
         <BottomNavigationAction
           label="Colecciones"
