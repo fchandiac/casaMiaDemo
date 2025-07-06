@@ -168,12 +168,20 @@ export default function CollectionsPage() {
           {/* Colecciones en progreso */}
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {collectingData.map((collection, index) => (
-              <CollectionCard
-                key={index}
-                productName={collection.name}
-                completedCount={collection.completedCount}
-                totalCount={collection.totalCount}
-              />
+              <Box 
+                key={index} 
+                sx={{ 
+                  border: '2px solid #ff9800',
+                  borderRadius: 2,
+                  overflow: 'hidden'
+                }}
+              >
+                <CollectionCard
+                  productName={collection.name}
+                  completedCount={collection.completedCount}
+                  totalCount={collection.totalCount}
+                />
+              </Box>
             ))}
           </Box>
         </TabPanel>

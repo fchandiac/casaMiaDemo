@@ -37,7 +37,7 @@ export default function CollectionCard({
     <>
       <Card 
         sx={{ 
-          border: '2px solid #ddd', 
+          border: 'none', 
           boxShadow: 'none',
           borderRadius: 2,
           overflow: 'hidden'
