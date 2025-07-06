@@ -102,6 +102,14 @@ export default function MissionsPage() {
       reward: "$3.000",
       imageEmoji: "☕",
       type: "trivia"
+    },
+    {
+      id: "mission4",
+      title: "Código Secreto Premium",
+      description: "Encuentra y escanea el código QR escondido en nuestra sección de cafés especiales",
+      reward: "$5.000",
+      imageEmoji: "🔍",
+      type: "qrcode"
     }
   ];
 
