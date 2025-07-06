@@ -182,23 +182,31 @@ export default function CollectionsPage() {
           {/* Colecciones completadas */}
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {completedData.map((collection, index) => (
-              <Box key={index} sx={{ position: 'relative' }}>
+              <Box 
+                key={index} 
+                sx={{ 
+                  border: '2px solid #4caf50',
+                  borderRadius: 2,
+                  overflow: 'hidden'
+                }}
+              >
                 <CollectionCard
                   productName={collection.name}
                   completedCount={collection.completedCount}
                   totalCount={collection.totalCount}
                 />
-                <Chip 
-                  label="¡Completada!" 
-                  color="success" 
-                  size="small"
-                  sx={{ 
-                    position: 'absolute', 
-                    top: 8, 
-                    right: 8,
-                    fontWeight: 'bold'
+                <Box
+                  sx={{
+                    bgcolor: '#4caf50',
+                    color: 'white',
+                    py: 1,
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    fontSize: '0.875rem'
                   }}
-                />
+                >
+                  ¡Colección Completada!
+                </Box>
               </Box>
             ))}
           </Box>
@@ -208,23 +216,32 @@ export default function CollectionsPage() {
           {/* Colecciones disponibles */}
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {availableData.map((collection, index) => (
-              <Box key={index} sx={{ position: 'relative', opacity: 0.7 }}>
+              <Box 
+                key={index} 
+                sx={{ 
+                  border: '2px solid #2196f3',
+                  borderRadius: 2,
+                  overflow: 'hidden',
+                  opacity: 0.85
+                }}
+              >
                 <CollectionCard
                   productName={collection.name}
                   completedCount={collection.completedCount}
                   totalCount={collection.totalCount}
                 />
-                <Chip 
-                  label="Disponible" 
-                  color="primary" 
-                  variant="outlined"
-                  size="small"
-                  sx={{ 
-                    position: 'absolute', 
-                    top: 8, 
-                    right: 8
+                <Box
+                  sx={{
+                    bgcolor: '#2196f3',
+                    color: 'white',
+                    py: 1,
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    fontSize: '0.875rem'
                   }}
-                />
+                >
+                  Disponible para Coleccionar
+                </Box>
               </Box>
             ))}
           </Box>
