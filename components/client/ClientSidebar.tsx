@@ -22,7 +22,8 @@ import {
   Person,
   Logout,
   Notifications,
-  ReceiptLong
+  ReceiptLong,
+  Store
 } from '@mui/icons-material';
 import { SimpleCollectionCardIcon } from '@/components/icons';
 import { useRouter } from 'next/navigation';
@@ -75,6 +76,12 @@ export default function ClientSidebar({ open, onClose }: ClientSidebarProps) {
       text: 'Recompensas', 
       icon: <EmojiEvents />, 
       path: '/client/rewards',
+      color: '#212121'
+    },
+    { 
+      text: 'Tienda CasaMia', 
+      icon: <Store />, 
+      path: '/client/store',
       color: '#212121'
     }
   ];
