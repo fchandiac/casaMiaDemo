@@ -25,7 +25,10 @@ import {
   Settings, 
   People,
   Receipt,
-  ExitToApp
+  ExitToApp,
+  Store,
+  Rocket,
+  EmojiEvents
 } from '@mui/icons-material';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -59,12 +62,14 @@ export default function Header() {
     const role = session?.user?.role || 'guest';
     
     const commonItems = [
-      { text: 'Dashboard', icon: <Dashboard />, path: '/dashboard' },
+      { text: 'Dashboard', icon: <Dashboard />, path: '/admin' },
     ];
     
     const adminItems = [
-      { text: 'Administración', icon: <Settings />, path: '/admin' },
       { text: 'Usuarios', icon: <People />, path: '/admin/users' },
+      { text: 'Productos', icon: <Store />, path: '/admin/products' },
+      { text: 'Misiones', icon: <Rocket />, path: '/admin/missions' },
+      { text: 'Recompensas', icon: <EmojiEvents />, path: '/admin/rewards' },
     ];
     
     const operatorItems = [
@@ -77,7 +82,7 @@ export default function Header() {
     
     let items = [...commonItems];
     
-    if (role === 'admin') items = [...items, ...adminItems, ...operatorItems];
+    if (role === 'admin') items = [...items, ...adminItems];
     if (role === 'operator') items = [...items, ...operatorItems];
     if (role === 'user') items = [...items, ...userItems];
     

@@ -34,11 +34,15 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
+      console.log('Attempting login with:', email, password);
+      
       const result = await signIn('credentials', {
         email,
         password,
         redirect: false,
       });
+
+      console.log('Login result:', result);
 
       if (!result?.ok) {
         showAlert('Credenciales inválidas', 'error');
@@ -47,16 +51,27 @@ export default function LoginForm() {
 
       showAlert('Inicio de sesión exitoso', 'success');
       
-      // Redirigir según el tipo de usuario
-      if (email === 'cliente@casamia.com') {
-        router.push('/client');
-      } else if (email === 'admin@casamia.com') {
+      // Esperar un poco para asegurar que el token se genere
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      // Redirigir directamente basado en el email
+      console.log('Redirecting based on email:', email);
+      
+      if (email === 'admin@casamia.com') {
+        console.log('Admin login detected, redirecting to /admin');
         router.push('/admin');
+        return;
+      } else if (email === 'cliente@casamia.com') {
+        console.log('Client login detected, redirecting to /client');
+        window.location.href = '/client';
       } else if (email === 'operador@casamia.com') {
-        router.push('/operator');
+        console.log('Operator login detected, redirecting to /operator');
+        window.location.href = '/operator';
       } else {
-        router.push('/dashboard');
+        console.log('Unknown email, redirecting to /admin');
+        window.location.href = '/admin';
       }
+      
     } catch (error) {
       showAlert('Error al iniciar sesión', 'error');
       console.error('Login error:', error);

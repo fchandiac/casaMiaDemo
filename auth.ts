@@ -23,6 +23,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return session;
     },
+    redirect: async ({ url, baseUrl }) => {
+      // Si la URL ya es una ruta específica, mantenerla
+      if (url.startsWith('/admin') || url.startsWith('/client') || url.startsWith('/operator')) {
+        return url;
+      }
+      
+      // Si es la página raíz, redirigir a admin por defecto
+      if (url === baseUrl || url === baseUrl + '/') {
+        return baseUrl + '/admin';
+      }
+      
+      // En otros casos, usar la URL proporcionada
+      return url;
+    },
   },
   pages: {
     signIn: '/',
