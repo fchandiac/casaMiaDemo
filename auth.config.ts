@@ -7,27 +7,27 @@ import CredentialsProvider from "next-auth/providers/credentials";
  * En un entorno de producción, estos usuarios deberían ser reemplazados
  * por una autenticación real contra una base de datos o servicio externo
  * 
- * - Admin: admin@example.com / admin123
- * - User: user@example.com / user123
- * - Operador: operator@example.com / operator123
+ * - Admin: admin@casamia.com / admin123
+ * - Cliente: cliente@casamia.com / cliente123
+ * - Operador: operador@casamia.com / operador123
  */
 const testUsers = [
   {
     id: "1",
-    email: "admin@example.com",
+    email: "admin@casamia.com",
     password: "admin123",
     role: "admin"
   },
   {
     id: "2",
-    email: "user@example.com",
-    password: "user123",
-    role: "user"
+    email: "cliente@casamia.com",
+    password: "cliente123",
+    role: "client"
   },
   {
     id: "3",
-    email: "operator@example.com",
-    password: "operator123",
+    email: "operador@casamia.com",
+    password: "operador123",
     role: "operator"
   }
 ];

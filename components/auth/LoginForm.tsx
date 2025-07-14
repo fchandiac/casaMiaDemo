@@ -50,6 +50,10 @@ export default function LoginForm() {
       // Redirigir según el tipo de usuario
       if (email === 'cliente@casamia.com') {
         router.push('/client');
+      } else if (email === 'admin@casamia.com') {
+        router.push('/admin');
+      } else if (email === 'operador@casamia.com') {
+        router.push('/operator');
       } else {
         router.push('/dashboard');
       }
