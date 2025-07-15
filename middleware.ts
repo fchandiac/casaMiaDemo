@@ -15,12 +15,15 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL('/', req.url));
   }
 
+  console.log('Middleware - Token role:', token.role);
+
   // Permitir acceso basado en roles
   const path = req.nextUrl.pathname;
   
   // Redirección específica para admin en la raíz del sitio
   if (path === '/' && token.role === 'admin') {
     console.log('Admin user detected, redirecting to /admin');
+    console.log('Middleware - Redirecting admin user to /admin');
     return NextResponse.redirect(new URL('/admin', req.url));
   }
 
