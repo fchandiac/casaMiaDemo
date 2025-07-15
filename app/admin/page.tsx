@@ -1,4 +1,4 @@
-// Estado actual de la app: Redirección y login funcionando correctamente. Solo usuarios de prueba pueden acceder. Admin va a /admin, cliente a /client, operador a /operator. Middleware y Home validados. Último commit sincronizado con GitHub (15/07/2025).
+// TEST Estado actual de la app: Redirección y login funcionando correctamente. Solo usuarios de prueba pueden acceder. Admin va a /admin, cliente a /client, operador a /operator. Middleware y Home validados. Último commit sincronizado con GitHub (15/07/2025).
 
 'use client';
 
