@@ -12,7 +12,14 @@ export default function Home() {
 
   useEffect(() => {
     if (session) {
-      router.push('/dashboard');
+      const email = session.user?.email;
+      if (email === 'admin@casamia.com') {
+        router.push('/admin');
+      } else if (email === 'cliente@casamia.com') {
+        router.push('/client');
+      } else if (email === 'operador@casamia.com') {
+        router.push('/operator');
+      }
     }
   }, [session, router]);
 

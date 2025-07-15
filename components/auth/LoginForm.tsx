@@ -29,9 +29,26 @@ export default function LoginForm() {
     setShowPassword(!showPassword);
   };
 
+  // Función para validar usuarios de prueba
+  function isValidTestUser(email: string, password: string) {
+    const users = [
+      { email: 'admin@casamia.com', password: 'admin123' },
+      { email: 'cliente@casamia.com', password: 'cliente123' },
+      { email: 'operador@casamia.com', password: 'operador123' },
+    ];
+    return users.some(user => user.email === email && user.password === password);
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+
+    // Validar usuario de prueba antes de enviar el login
+    if (!isValidTestUser(email, password)) {
+      showAlert('Usuario o contraseña inválidos. Solo se permiten los usuarios de prueba.', 'error');
+      setLoading(false);
+      return;
+    }
 
     try {
       console.log('Attempting login with:', email, password);
@@ -67,11 +84,7 @@ export default function LoginForm() {
       } else if (email === 'operador@casamia.com') {
         console.log('Operator login detected, redirecting to /operator');
         window.location.href = '/operator';
-      } else {
-        console.log('Unknown email, redirecting to /admin');
-        window.location.href = '/admin';
-      }
-      
+      } 
     } catch (error) {
       showAlert('Error al iniciar sesión', 'error');
       console.error('Login error:', error);

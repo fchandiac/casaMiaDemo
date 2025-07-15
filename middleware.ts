@@ -7,59 +7,46 @@ export async function middleware(req: NextRequest) {
     secret: process.env.NEXTAUTH_SECRET || 'supersecretkey',
   });
 
-  console.log('Middleware - Path:', req.nextUrl.pathname);
-  console.log('Middleware - Token:', token);
+  const path = req.nextUrl.pathname;
+  const email = token?.email;
 
   if (!token) {
-    console.log('No token found, redirecting to /');
+    // Si no hay sesión, permitir acceso solo a la raíz (donde está el splash/login)
+    if (path === '/') {
+      return NextResponse.next();
+    }
+    // Si intenta acceder a cualquier otra ruta, redirigir a la raíz
     return NextResponse.redirect(new URL('/', req.url));
   }
 
-  console.log('Middleware - Token role:', token.role);
-
-  // Permitir acceso basado en roles
-  const path = req.nextUrl.pathname;
-  
-  // Redirección específica para admin en la raíz del sitio
-  if (path === '/' && token.role === 'admin') {
-    console.log('Admin user detected, redirecting to /admin');
-    console.log('Middleware - Redirecting admin user to /admin');
-    return NextResponse.redirect(new URL('/admin', req.url));
-  }
-
-  // Rutas protegidas para admin
-  if (path.startsWith('/admin')) {
-    console.log('Admin path accessed, user role:', token.role);
-    if (token.role !== 'admin') {
-      console.log('Access denied for admin path');
-      return NextResponse.redirect(new URL('/', req.url));
+  // Redirección por email
+  if (path === '/') {
+    if (email === 'admin@casamia.com') {
+      return NextResponse.redirect(new URL('/admin', req.url));
+    }
+    if (email === 'cliente@casamia.com') {
+      return NextResponse.redirect(new URL('/client', req.url));
     }
   }
-  
-  // Rutas protegidas para operadores
-  if (path.startsWith('/operator') && token.role !== 'operator' && token.role !== 'admin') {
+
+  // Proteger rutas admin
+  if (path.startsWith('/admin') && email !== 'admin@casamia.com') {
     return NextResponse.redirect(new URL('/', req.url));
   }
-  
-  // Rutas protegidas para usuarios normales
-  if (path.startsWith('/user') && token.role !== 'user' && token.role !== 'admin') {
+  // Proteger rutas client
+  if (path.startsWith('/client') && email !== 'cliente@casamia.com') {
     return NextResponse.redirect(new URL('/', req.url));
   }
 
-  // Rutas protegidas para clientes
-  if (path.startsWith('/client') && token.role !== 'client' && token.role !== 'admin') {
-    return NextResponse.redirect(new URL('/', req.url));
-  }
-
-  console.log('Access granted for path:', path);
   return NextResponse.next();
 }
 
 export const config = {
   matcher: [
     '/admin/:path*',
+    '/client/:path*',
     '/operator/:path*',
     '/user/:path*',
-    '/client/:path*'
+    '/'
   ],
 };
