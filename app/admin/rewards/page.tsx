@@ -282,23 +282,6 @@ export default function RewardsAdminPage() {
               defaultValue={editingReward?.value || ''}
             />
             <TextField
-              label="Costo en Puntos"
-              type="number"
-              fullWidth
-              defaultValue={editingReward?.pointsCost || ''}
-            />
-            <TextField
-              label="Categoría"
-              fullWidth
-              defaultValue={editingReward?.category || ''}
-            />
-            <TextField
-              label="Stock"
-              type="number"
-              fullWidth
-              defaultValue={editingReward?.stock || ''}
-            />
-            <TextField
               label="Fecha de Expiración"
               type="date"
               fullWidth
